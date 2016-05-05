@@ -1,0 +1,96 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,latin-ext);
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+div.layer_1, div.layer_2 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    transition: all ease-in 500ms;
+}
+    
+    div.layer_1 { 
+        background: #d8433c;  
+        z-index: 2;
+    }
+
+        div.closed { top: -100vh; }
+
+    div.layer_2 {
+        z-index: 1;
+        color: #3c3c3c;
+    }
+
+    content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        overflow: hidden;
+    }
+
+        img {
+            width: 400px;
+            position: relative;
+        }
+
+        div.autorisation {
+            text-align: center;
+            margin-top: 64px;
+        }
+
+            div.autorisation div { 
+                display: inline-block; 
+                cursor: pointer;
+                transition: all ease-in 50ms;
+            }
+
+            div.autorisation div:hover { 
+                color: #ffeae9;
+            }
+
+div.enter { width: 300px; }
+    
+    .disabled {
+        display:none;
+    }
+
+        .active {
+            border-bottom: 1px solid #29ae91 !important;
+        }
+
+    input[type="password"] {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 14px;
+        background: rgba(80, 80, 80, .06);
+        color: #505050;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+        border-radius: 2px;
+        border: 1px solid rgba(80, 80, 80, .3);
+    }
+
+        button#submit {
+            width: 100%;
+            background: #29ae91;
+            box-sizing: border-box;
+            border: 0;
+            border-radius: 2px;
+            padding: 10px 14px;
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            transition: all ease-in 50ms;
+            cursor: pointer;
+        }
+
+        button#submit:hover { background: #20846e; }

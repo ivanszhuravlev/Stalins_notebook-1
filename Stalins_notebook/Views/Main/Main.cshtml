@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8" />
+    <link rel="stylesheet" href="~/Content/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="~/scripts/angular.min.js"></script>
+    <title>Notebook</title>
+</head>
+<body>
+    <header>
+        <img src="~/Content/img/logo_min.png" />
+        <nav>
+            <a href="#">Профиль</a>
+            <a href="/Index/Index">Выход</a>
+        </nav>
+    </header>
+    <content>
+        <aside ng-controller="listController">
+            <div class="action-menu">
+                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
+                <div class="action-bar" id="contacts_actions">
+                    <button class="delete-button" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
+                    <button><i class="material-icons">email</i></button>
+                    <button><i class="material-icons">group_add</i></button>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <div class="list-contacts" ng-include="path"></div>
+            </div>
+        </aside>
+        <div class="right-side" ng-controller="contactController">
+            <div class="action-menu">
+                <button class="add-contact" ng-click="addContactForm()">
+                    <div><i class="material-icons md-18">add</i></div>
+                    <div>Новый контакт</div>
+                </button>
+            </div>
+            <div class="output">
+                <div ng-include="path"></div>
+            </div>
+        </div>
+    </content>
+    <script>
+        var model = {
+            contacts: [],
+            choosed_contacts: []
+        };
+
+        var mainApp = angular.module("mainApp", []);
+    </script>
+    <script src="~/scripts/methods/checkboxes.js"></script>
+    <script src="~/scripts/controllers/contactController.js"></script>
+    <script src="~/scripts/controllers/listController.js"></script>
+</body>
+</html>
