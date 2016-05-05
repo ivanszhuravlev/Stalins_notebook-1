@@ -10,7 +10,7 @@ mainApp.controller("contactController", function ($scope, $http) {
 
     $scope.addContact = function (contact, addContactForm) {
 
-        $http.post("/api/Contacts", contact).success(function (data) {
+        $http.post("/api/Contacts",contact).success(function (data) {
             console.log(data);
             $scope.model.contacts.unshift(data);
         });

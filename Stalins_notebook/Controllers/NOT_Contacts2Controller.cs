@@ -11,22 +11,19 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Stalins_notebook.Models;
 
-using System.Web.Mvc;
-
-
 namespace Stalins_notebook.Controllers
 {
-    public class ContactsController : ApiController
+    public class Contacts2Controller : ApiController
     {
         private NotebookContext db = new NotebookContext();
 
-        // GET: api/Contacts
+        // GET: api/Contacts2
         public IQueryable<Contact> GetContacts()
         {
             return db.Contacts;
         }
 
-        // GET: api/Contacts/5
+        // GET: api/Contacts2/5
         [ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> GetContact(int id)
         {
@@ -39,7 +36,7 @@ namespace Stalins_notebook.Controllers
             return Ok(contact);
         }
 
-        // PUT: api/Contacts/5
+        // PUT: api/Contacts2/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutContact(int id, Contact contact)
         {
@@ -74,7 +71,7 @@ namespace Stalins_notebook.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Contacts
+        // POST: api/Contacts2
         [ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> PostContact(Contact contact)
         {
@@ -89,7 +86,7 @@ namespace Stalins_notebook.Controllers
             return CreatedAtRoute("DefaultApi", new { id = contact.ContactId }, contact);
         }
 
-        // DELETE: api/Contacts/5
+        // DELETE: api/Contacts2/5
         [ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> DeleteContact(int id)
         {
@@ -118,20 +115,5 @@ namespace Stalins_notebook.Controllers
         {
             return db.Contacts.Count(e => e.ContactId == id) > 0;
         }
-
-       /* public FileContentResult GetImage(int id)
-        {
-            //Contact contact = db.Contacts.FirstOrDefault(p => p.ContactId == id);
-            Contact contact = db.Contacts.Find(id);
-            if (id != null)
-            {
-                return null;// File(contact.ImageData, contact.ImageMimeType);
-            }
-            else
-            {
-                return null;
-            }
-        }*/
     }
-
 }

@@ -138,6 +138,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Notebook.mdf" />
+    <Content Include="App_Data\Notebook_log.ldf">
+      <DependentUpon>Notebook.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo_min.png" />
     <Content Include="Content\index.css" />
@@ -165,12 +169,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\NOT_Contacts1Controller.cs" />
+    <Compile Include="Controllers\NOT_Contacts2Controller.cs" />
+    <Compile Include="Controllers\NOT_ContactsController.cs" />
     <Compile Include="Controllers\Index.cs" />
     <Compile Include="Controllers\Main.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\MembersGroup.cs" />
     <Compile Include="Models\NotebookContext.cs" />
     <Compile Include="Models\NotebookDBInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,7 +206,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\Contacts1\" />
     <Folder Include="Views\Contacts\" />
   </ItemGroup>
   <ItemGroup>
