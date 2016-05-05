@@ -5,7 +5,7 @@ mainApp.controller("listController", function ($scope, $http) {
     $scope.path = '/Main/ContactsList';
 
     $http.get("/api/Contacts").success(function (data) {
-        $scope.model.contacts = data.reverse();
+        $scope.model.contacts = data;
     }).error(function (message) {
         console.log("Error " + message);
     });

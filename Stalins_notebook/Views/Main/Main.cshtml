@@ -17,19 +17,20 @@
         </nav>
     </header>
     <content>
-        <aside ng-controller="listController">
+        <aside >
             <div class="action-menu">
-                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
+                <span class="checkbox" id="check_all" ng-controller="listController" ng-click="chooseAll()"></span>
                 <div class="action-bar" id="contacts_actions">
-                    <button class="delete-button" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
+                    <button class="delete-button" ng-controller="listController" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
                     <button><i class="material-icons">email</i></button>
-                    <button><i class="material-icons">group_add</i></button>
+                    <button class="group-button"ng-controller="groupController" ng-click="addToGroup" ><i class="material-icons">group_add</i></button>
                 </div>
             </div>
             <div class="list-wrapper">
-                <div class="list-contacts" ng-include="path"></div>
+                <div class="list-contacts"ng-controller="listController" ng-include="path"></div>
             </div>
         </aside>
+        
         <div class="right-side" ng-controller="contactController">
             <div class="action-menu">
                 <button class="add-contact" ng-click="addContactForm()">
@@ -41,11 +42,25 @@
                 <div ng-include="path"></div>
             </div>
         </div>
+        <aside class="right-side">
+            <div class="action-menu">
+                <span class="checkbox" id="check_all" ng-controller="groupController" ng-click="chooseAll()"></span>
+                <div class="action-bar left-bar" id="contacts_actions">
+                    <button class="delete-button" ng-controller="groupController" ng-click="deleteGroups()"><i class="material-icons">delete</i></button>
+                    <button><i class="material-icons">Редактировать</i></button>
+                    <button class="group-button" ng-controller="groupController" ng-click="addToGroup"><i class="material-icons">group_add</i></button>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <div class="list-contacts" ng-controller="groupController" ng-include="path"></div>
+            </div>
+        </aside>
     </content>
     <script>
         var model = {
             contacts: [],
-            choosed_contacts: []
+            choosed_contacts: [],
+            groups: []
         };
 
         var mainApp = angular.module("mainApp", []);
@@ -53,5 +68,6 @@
     <script src="~/scripts/methods/checkboxes.js"></script>
     <script src="~/scripts/controllers/contactController.js"></script>
     <script src="~/scripts/controllers/listController.js"></script>
+    <script src="~/scripts/controllers/groupController.js"></script>
 </body>
 </html>

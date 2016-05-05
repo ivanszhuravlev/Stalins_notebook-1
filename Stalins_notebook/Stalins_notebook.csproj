@@ -153,6 +153,7 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\controllers\contactController.js" />
+    <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
     <Content Include="scripts\index.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
@@ -169,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\NOT_Contacts1Controller.cs" />
     <Compile Include="Controllers\NOT_Contacts2Controller.cs" />
     <Compile Include="Controllers\NOT_ContactsController.cs" />
@@ -198,6 +200,7 @@
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Main\GroupsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
