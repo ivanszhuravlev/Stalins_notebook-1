@@ -130,7 +130,8 @@ content {
         aside div.list-wrapper {
             display: flex;
             flex-flow: column;
-            overflow: scroll;
+           
+            overflow:auto;
             width: 100%;
             box-sizing: border-box;
             padding: 12px; 

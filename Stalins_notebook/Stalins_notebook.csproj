@@ -146,6 +146,7 @@
     <Content Include="Content\img\logo_min.png" />
     <Content Include="Content\index.css" />
     <Content Include="Content\main.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -156,6 +157,9 @@
     <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
     <Content Include="scripts\index.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -164,6 +168,7 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +206,7 @@
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Main\GroupsList.cshtml" />
+    <Content Include="Views\Main\CreateEditGroupForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -209,8 +215,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Contacts1\" />
-    <Folder Include="Views\Contacts\" />
+    <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

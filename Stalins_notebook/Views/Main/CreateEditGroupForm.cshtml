@@ -1,0 +1,8 @@
+﻿<form class="add-group">
+    <input type="text" id="Name" placeholder="Название" ng-required="required" ng-model="group.Name" />
+    <input type="text" id="Note" placeholder="Заметка" ng-required="required" ng-model="group.Note" />
+    <input type="text" id="Description" placeholder="Описание" ng-required="required" ng-model="group.Description" />
+    <button ng-click="CreateGroup(group, CreateGroupForm)">
+        Добавить группу
+    </button>
+</form>

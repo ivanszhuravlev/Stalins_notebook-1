@@ -5,12 +5,14 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+using System.Web.Mvc;
+
 namespace Stalins_notebook.Models
 {
     [DisplayName("Группа")]
     public class Group
     {
-        // [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public int GroupId { get; set; }
 
         [DisplayName("Название")]
