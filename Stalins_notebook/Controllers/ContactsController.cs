@@ -23,7 +23,7 @@ namespace Stalins_notebook.Controllers
         // GET: api/Contacts
         public IQueryable<Contact> GetContacts()
         {
-            return db.Contacts;
+            return db.Contacts.OrderBy(c=>c.LastName).ThenBy(c=>c.FirstName).ThenBy(c=>c.MiddleName);
         }
 
         // GET: api/Contacts/5

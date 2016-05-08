@@ -142,19 +142,29 @@
     <Content Include="App_Data\Notebook_log.ldf">
       <DependentUpon>Notebook.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo_min.png" />
     <Content Include="Content\index.css" />
     <Content Include="Content\main.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\controllers\contactController.js" />
+    <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
+    <Content Include="scripts\controllers\membersgroupController.js" />
     <Content Include="scripts\index.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -163,17 +173,19 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Controllers\NOT_Contacts1Controller.cs" />
-    <Compile Include="Controllers\NOT_Contacts2Controller.cs" />
-    <Compile Include="Controllers\NOT_ContactsController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\MembersGroupController.cs" />
     <Compile Include="Controllers\Index.cs" />
-    <Compile Include="Controllers\Main.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\ViewGroupController.cs" />
+    <Compile Include="Controllers\ViewMembersGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +194,7 @@
     <Compile Include="Models\MembersGroup.cs" />
     <Compile Include="Models\NotebookContext.cs" />
     <Compile Include="Models\NotebookDBInitializer.cs" />
+    <Compile Include="Models\Pair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +211,11 @@
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\ViewGroup\CreateEditGroupForm.cshtml" />
+    <Content Include="Views\ViewGroup\GroupsList.cshtml" />
+    <Content Include="Views\ViewMembersGroup\InfoMarkersContact.cshtml" />
+    <Content Include="Views\ViewMembersGroup\MembersGroupList.cshtml" />
+    <Content Include="Views\ViewGroup\Group.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,8 +224,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Contacts1\" />
     <Folder Include="Views\Contacts\" />
+    <Folder Include="Views\Group\" />
+    <Folder Include="Views\ViewMembersGroups\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -13,8 +13,15 @@ mainApp.controller("contactController", function ($scope, $http) {
         $http.post("/api/Contacts",contact).success(function (data) {
             console.log(data);
             $scope.model.contacts.unshift(data);
+            
         });
-
+       
         $scope.path = '';
+    }
+   
+
+    // Compare function
+    function compareLastName(personA, personB) {
+        return personA.LastName - personB.LastName;
     }
 });

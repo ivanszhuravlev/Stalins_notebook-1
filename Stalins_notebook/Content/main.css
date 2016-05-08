@@ -257,6 +257,7 @@ div.list-contacts {
 
         div.contact.checked {
             color: #B5ADAD !important;
+            background-color:salmon;
         }
 
             .checkbox {
@@ -289,3 +290,102 @@ div.list-contacts {
             display: none;
         }
 
+
+/* Groupss list */
+
+div.list-groups {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+    div.list-groups div.group {
+        display: flex;
+        width: 100%;
+        padding: 12px 14px;
+        box-sizing: border-box;
+        color: #696464;
+        border-bottom: 1px solid #ececec;
+        cursor: pointer;
+        flex-flow: row;
+        align-items: center;
+    }
+
+    div.list-groups div.group:hover{
+        color: #d77e79;
+    }
+
+        div.group.checked {
+            color: #B5ADAD !important;
+            background-color:salmon;
+        }
+
+            .checkbox {
+                display: inline-flex;
+                box-sizing: border-box;
+                width: 13px;
+                height: 13px;
+                background: #ffffff;
+                border: 1px solid #B5ADAD;
+                border-radius: 1px;
+                margin-right: 13px;
+                cursor: pointer;
+                color: #B5ADAD;
+            }
+
+                .checkbox.checked::after {
+                    font-family: 'Material Icons';
+                    font-size: 12px;
+                    content: 'done';
+                    margin: -1px 0 0 0px;
+                }
+
+
+            .info {
+                display: inline-flex; 
+                cursor: pointer;  
+            }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+    /*
+        CreateEditGRoup
+    */
+     div.output form.add-group {
+                display: flex;
+                flex-flow: column wrap;
+                width: 320px;
+
+            }
+
+                form.add-group input {
+                    margin-bottom: 18px;
+                    border: 0;
+                    border-bottom: 1px solid #696464;
+                    font-family: 'Open Sans';
+                    padding: 9px 12px;
+                    color: #696464;
+                }
+
+                form.add-group button {
+                    width: 100%;
+                    background: #69c6b2;
+                    box-sizing: border-box;
+                    border: 0;
+                    border-radius: 2px;
+                    padding: 10px 14px;
+                    color: #ffffff;
+                    font-family: 'Open Sans', sans-serif;
+                    cursor: pointer;
+                    margin-top: 0px;
+                    margin-bottom: 24px;
+                }
+
+                    form.add-group button:hover {
+                        background: #29ae91;
+                    }
