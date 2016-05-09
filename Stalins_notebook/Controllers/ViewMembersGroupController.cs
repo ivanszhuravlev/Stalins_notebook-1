@@ -16,6 +16,9 @@ namespace Stalins_notebook.Controllers
         {
             return PartialView();
         }
+        public ActionResult InfoMarkersGroup()
+        {
+            return PartialView();
+        }
     }
-}
 }

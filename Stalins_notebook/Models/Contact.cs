@@ -105,6 +105,11 @@ namespace Stalins_notebook.Models
 
         [DisplayName("Заметка")]
         // [Required(ErrorMessage = "Please enter a description")]
+        [DataType(DataType.Text)]
+        public string Note { get; set; }
+
+        [DisplayName("Описание")]
+        // [Required(ErrorMessage = "Please enter a description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 

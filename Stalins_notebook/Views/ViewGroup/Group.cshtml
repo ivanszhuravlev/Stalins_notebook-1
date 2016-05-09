@@ -1,13 +1,14 @@
-﻿<div class="group"
-     id="group_{{currentgroup.GroupId}}"
-     ng-repeat="group in model.groups">
-    <span class="checkbox"
-          id="check_{{group.GroupId}}"
-          ng-click="chooseGroup(group.GroupId)">
-
-    </span>
-    <span class="info">
-        {{group.Name}}
-        {{group.Note}}
-    </span>
+﻿<div class="add-group showgroup"
+     id="group_{{model.showgroup.GroupId}}">
+    <div>
+        <p>Название: {{model.showgroup.Name}}</p> 
+        <p>Заметка:  {{model.showgroup.Note}}</p> 
+        <p>Описание: {{model.showgroup.Description}}</p>
+    </div>
+    <div  ng-controller="membersgroupController">
+        
+            <button ng-click="showMembers(model.showgroup.GroupId)">КПоказать всех учатников</button>
+       
+    </div>
 </div>
+

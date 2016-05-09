@@ -3,27 +3,23 @@
 mainApp.controller("groupController", function ($scope, $http) {
 
    
-
+    $scope.path = '/ViewGroup/Group';
     $scope.model = model;
+
     $scope.pathgroup = '/ViewGroup/GroupsList';
     // GET GROUP LIST
     $http.get("/api/Groups").success(function (data) {
         $scope.model.groups = data;
+       
     }).error(function (message) {
         console.log("Error " + message);
     });
 
-  
-    $scope.path = '';
-    $scope.showgroup;
-    $scope.showGroup=function()
+    $scope.showGroup=function(datagroup)
     {
+        $scope.model.showgroup = datagroup;
         $scope.path = '/ViewGroup/Group';
-        var id = $scope.model.choosed_groups.pop();
-        $http.get("api/Groups" + id).success(function (data) {
-            alert("GOOD")
-            $scope.showgroup=data;
-        });
+        alert($scope.model.showgroup.GroupId);
     }
 
     $scope.createEditGroupForm = function () {
@@ -35,10 +31,8 @@ mainApp.controller("groupController", function ($scope, $http) {
         $http.post("/api/Groups", group).success(function (data) {
             console.log(data);
             $scope.model.groups.unshift(data);
-            
+            $scope.showGroup(data);
         });
-
-        $scope.path = '';
     }
    
 
@@ -58,7 +52,10 @@ mainApp.controller("groupController", function ($scope, $http) {
         });
     };
 
-    $scope.chooseGroup = function (id) {
+    $scope.chooseGroup = function (id,datagroup) {
+
+        $scope.showGroup(datagroup);
+
         var checkbox = document.getElementById("check_" + id),
             checkbox_all = document.getElementById("check_all"),
             groups = document.getElementsByClassName("group"),

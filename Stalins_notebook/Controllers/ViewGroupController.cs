@@ -19,5 +19,9 @@ namespace Stalins_notebook.Controllers
         {
             return PartialView();
         }
+        public ActionResult Group()
+        {
+            return PartialView();
+        }
     }
 }

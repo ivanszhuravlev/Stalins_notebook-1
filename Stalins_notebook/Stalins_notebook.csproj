@@ -181,9 +181,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
+    <Compile Include="Controllers\MarkersOfContactController.cs" />
     <Compile Include="Controllers\MembersGroupController.cs" />
     <Compile Include="Controllers\Index.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MarkersOfGroupController.cs" />
     <Compile Include="Controllers\ViewGroupController.cs" />
     <Compile Include="Controllers\ViewMembersGroupController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +218,7 @@
     <Content Include="Views\ViewMembersGroup\InfoMarkersContact.cshtml" />
     <Content Include="Views\ViewMembersGroup\MembersGroupList.cshtml" />
     <Content Include="Views\ViewGroup\Group.cshtml" />
+    <Content Include="Views\ViewMembersGroup\InfoMarkersGroup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -225,8 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Contacts\" />
-    <Folder Include="Views\Group\" />
-    <Folder Include="Views\ViewMembersGroups\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
