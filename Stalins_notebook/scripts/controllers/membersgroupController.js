@@ -5,8 +5,9 @@ mainApp.controller("membersgroupController", function ($scope, $http) {
     $scope.pathcurrentgroups = ''
     $scope.showMembers = function (idNowGroup) {
         $scope.pathcurrentgroups = '/ViewMembersGroup/InfoMarkersGroup'
-        alert("Мы отправляем на сервер значение  "+idNowGroup);
-        $http.post("/api/MarkersOfGroup/",idNowGroup).success(function (data) {
+        alert("Мы отправляем на сервер значение  " + idNowGroup);
+        alert("PRIVET  " + idNowGroup);
+        $http.post("/api/",idNowGroup).success(function (data) {
             $scope.model.infomarkersgroup = data;
             alert("HELLO FROM GET ");
         }).error(function (message) {

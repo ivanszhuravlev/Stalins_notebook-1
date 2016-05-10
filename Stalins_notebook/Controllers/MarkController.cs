@@ -15,10 +15,10 @@ namespace Stalins_notebook.Controllers
 {
     public class MarkersOfGroupController : ApiController
     {
-        private NotebookContext db = new NotebookContext();
+        /*private NotebookContext db = new NotebookContext();
 
-        [ResponseType(typeof(List<Contact>))]
-        public IHttpActionResult Postgroups(int idgroup)
+        
+        public List<Contact> GetMarkersOfGroup(int idgroup)
         {
             //int idgroup = group.GroupId;
             int[] idsMember =  db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g => g.MemberId).ToArray();
@@ -29,7 +29,7 @@ namespace Stalins_notebook.Controllers
             }
 
 
-            return Ok(membersGroupArray);
+            return membersGroupArray;
         }
 
         // GET: api/MembersGroups/5
@@ -52,7 +52,7 @@ namespace Stalins_notebook.Controllers
          }*/
 
         // PUT: api/MembersGroups/5
-        [ResponseType(typeof(void))]
+       /* [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMembersGroup(int id, MembersGroup membersGroup)
         {
             if (!ModelState.IsValid)
@@ -129,6 +129,6 @@ namespace Stalins_notebook.Controllers
         private bool MembersGroupExists(int id)
         {
             return db.MembersGroups.Count(e => e.MembersGroupId == id) > 0;
-        }
+        }*/
     }
 }

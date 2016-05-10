@@ -180,12 +180,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\MarkersOfContactController.cs" />
     <Compile Include="Controllers\MembersGroupController.cs" />
     <Compile Include="Controllers\Index.cs" />
     <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Controllers\MarkersOfGroupController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
     <Compile Include="Controllers\ViewGroupController.cs" />
     <Compile Include="Controllers\ViewMembersGroupController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,7 +197,6 @@
     <Compile Include="Models\MembersGroup.cs" />
     <Compile Include="Models\NotebookContext.cs" />
     <Compile Include="Models\NotebookDBInitializer.cs" />
-    <Compile Include="Models\Pair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
