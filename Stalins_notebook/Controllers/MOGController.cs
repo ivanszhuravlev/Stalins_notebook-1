@@ -13,7 +13,7 @@ using Stalins_notebook.Models;
 
 namespace Stalins_notebook.Controllers
 {
-    public class MarkersOfGroupController : ApiController
+    public class MOGController : ApiController
     {
         /*private NotebookContext db = new NotebookContext();
 
