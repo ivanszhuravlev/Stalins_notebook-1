@@ -290,10 +290,20 @@ div.list-contacts {
             display: none;
         }
 
-        div.call-button {
-            display: flex; 
+        .call-button {
+            display: inline-flex; 
             cursor: pointer; 
+            text-decoration: none;
+            color: #B5ADAD;
         }
+
+            .call-button:hover {
+                color: #69c6b2;
+            }
+
+            .call-button i {
+                font-size: 20px;
+            }
 
 
 

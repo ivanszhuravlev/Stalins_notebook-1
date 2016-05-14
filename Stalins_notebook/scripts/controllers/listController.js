@@ -176,16 +176,4 @@ mainApp.controller("listController", function ($scope, $http) {
             action_bar.classList.remove("shown");
         }
     }
-
-    /*-------------------------------------------------------*/
-
-    $scope.call = function () {
-        alert("hi");
-        Skype.ui({
-            name: "call",
-            element: "SkypeButton_Call_#selisej198_1",
-            participants: ["selisej198"],
-            video: false
-        });
-    }
 });
