@@ -33,10 +33,6 @@ namespace Stalins_notebook.Models
         //[StringLength(50, MinimumLength = 1, ErrorMessage = "Длина строки должна быть от 1 до 50 символов")]
         public string MiddleName { get; set; }
 
-        [DisplayName("Пол")]
-        [DataType(DataType.Text)]
-        // [Required(ErrorMessage = "Пожалуйта, выберети пол")]
-        public string Gender { get; set; }
         [DisplayName("Дата рождения")]
         [DataType(DataType.Date)]
         //  [Required(ErrorMessage = "Пожалуйта, введите дату рождения")]
@@ -58,32 +54,12 @@ namespace Stalins_notebook.Models
         //  [Required(ErrorMessage = "Пожалуйта, введите телефон")]
         public int? Telephone2 { get; set; }
 
-        [DataType(DataType.Url)]
-        [DisplayName("Skype")]
-        //  [Required(ErrorMessage = "Пожалуйта, введите логин в Skype")]
-        public string Skype { get; set; }
-        [DataType(DataType.Url)]
-        [DisplayName("Facebook")]
-        //  [Required(ErrorMessage = "Пожалуйта, введите логин в Facebook")]
-        public string Facebook { get; set; }
-        [DataType(DataType.Url)]
-        [DisplayName("Twitter")]
-        //  [Required(ErrorMessage = "Пожалуйта, введите логин в Twitter")]
-        public string Twitter { get; set; }
-        [DataType(DataType.Url)]
-        [DisplayName("Вконтакте")]
-        //  [Required(ErrorMessage = "Пожалуйта, введите логин в VK")]
-        public string VK { get; set; }
+        
 
-        [DisplayName("Город")]
-        [DataType(DataType.Text)]
-        //  [Required(ErrorMessage = "Пожалуйта, введите город")]
-        public string City { get; set; }
-
-        [DisplayName("Улица с номером дома и квартиры")]
+        [DisplayName("Адрес")]
         [DataType(DataType.Text)]
         //   [Required(ErrorMessage = "Пожалуйта, введите филиал предприятия")]
-        public string AddressLine { get; set; }
+        public string Address { get; set; }
 
         [DisplayName("Место работы")]
         [DataType(DataType.Text)]
@@ -105,8 +81,8 @@ namespace Stalins_notebook.Models
 
         [DisplayName("Заметка")]
         // [Required(ErrorMessage = "Please enter a description")]
-        [DataType(DataType.MultilineText)]
-        public string Description { get; set; }
+        [DataType(DataType.Text)]
+        public string Note { get; set; }
 
         // public int rowguid { get; set; }
         [DisplayName("Последнее обновление")]
