@@ -17,19 +17,23 @@
         </nav>
     </header>
     <content>
+        <!--////////////       Left-side part  with list cintact begin       ////////////////////-->
         <aside ng-controller="listController">
             <div class="action-menu">
                 <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
                 <div class="action-bar" id="contacts_actions">
                     <button class="delete-button" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
                     <button><i class="material-icons">email</i></button>
-                    <button><i class="material-icons">group_add</i></button>
+                    <button ng-controller="membersgroupController" ng-click="addMembers()"><i class="material-icons">group_add</i></button>
                 </div>
             </div>
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
             </div>
         </aside>
+        <!--////////////       Left-side part  with list cintact end       ////////////////////-->
+
+        <!--////////////       Middle part   begin        ////////////////////-->
         <div class="right-side" ng-controller="contactController">
             <div class="action-menu">
                 <button class="add-contact" ng-click="addContactForm()">
@@ -41,17 +45,55 @@
                 <div ng-include="path"></div>
             </div>
         </div>
+
+        <div class="right-side" ng-controller="groupController">
+            <div class="action-menu">
+                <button class="right-side add-contact" ng-click="createEditGroupForm()">
+                    <div><i class="material-icons md-18">add</i></div>
+                    <div>Новая группа</div>
+                </button>
+            </div>
+            <div class="output">
+                <div ng-include="path"></div>  
+            </div>
+        </div>
+
+        <!--////////////       Middle part        end   ////////////////////-->
+
+        <!--////////////       Right-side part  with list group begin       ////////////////////-->
+        <aside ng-controller="groupController">
+            <div class="action-menu">
+                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
+                <div class="action-bar" id="groups_actions">
+                    <button class="delete-button" ng-click="deleteGroups()"><i class="material-icons">delete</i></button>
+                    <button><i class="material-icons">email</i></button>
+                    <button class="right-side" ng-click="createEditGroupForm()"><i class="material-icons">add</i></button>
+                </div>
+            </div>
+            <div class="list-wrapper">
+                <div class="list-groups" ng-include="pathgroup"></div>
+            </div>
+        </aside>
+        <!--////////////       Right-side part  with list group end    ////////////////////-->
     </content>
     <script>
         var model = {
             contacts: [],
-            choosed_contacts: []
+            choosed_contacts: [],
+            groups: [],
+            choosed_groups: [],
+            infomarkersgroup: [],
+
+            showgroup: []
+
         };
 
         var mainApp = angular.module("mainApp", []);
     </script>
-    <script src="~/scripts/methods/checkboxes.js"></script>
+    
     <script src="~/scripts/controllers/contactController.js"></script>
     <script src="~/scripts/controllers/listController.js"></script>
+    <script src="~/scripts/controllers/groupController.js"></script>
+    <script src="~/scripts/controllers/membersgroupController.js"></script>
 </body>
 </html>

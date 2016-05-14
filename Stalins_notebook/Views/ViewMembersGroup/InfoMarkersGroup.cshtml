@@ -1,0 +1,15 @@
+﻿<div class="marker"
+     id="marker_{{marker.ContactId}}"
+     ng-repeat="marker in model.infomarkersgroup">
+    <span class="checkbox"
+          id="check_{{marker.ContactId}}"
+          ng-click="chooseGroup(marker.ContactId,marker)">
+
+    </span>
+    <div>
+        {{.marker.LastName}}
+        {{marker.FirstName}}
+        {{marker.MiddleName}}
+    </div>
+    <button ng-controller="membersgroupController" ng-click="showMembers()">Показать всех участников</button>
+</div>

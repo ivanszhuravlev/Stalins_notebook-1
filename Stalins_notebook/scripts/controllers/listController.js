@@ -5,7 +5,7 @@ mainApp.controller("listController", function ($scope, $http) {
     $scope.path = '/Main/ContactsList';
 
     $http.get("/api/Contacts").success(function (data) {
-        $scope.model.contacts = data.reverse();
+        $scope.model.contacts = data;
     }).error(function (message) {
         console.log("Error " + message);
     });
@@ -21,9 +21,29 @@ mainApp.controller("listController", function ($scope, $http) {
     function deleteContactsHandler(id) {
         $http.delete("/api/Contacts/" + id + "").success(function (data) {
             var index = $scope.model.contacts.indexOf(data);
-            alert(index);
+            
         });
     };
+
+    //add to group
+   /* $scope.addMembers = function () {
+        var ids=[]
+        for (var i = 0; i < $scope.model.choosed_contacts.length; i++) {
+            ids[i]=$scope.model.choosed_contacts[i].ContactId;
+        }
+       
+        
+    addMembersHandler(ids);
+      
+    };
+
+    function addMembersHandler(ids) {
+        $http.post("/api/Groups/" + JSON.stringify(ids) + "").success(function (data) {
+            var index = $scope.model.contacts.indexOf(data);
+            alert(index);
+        });
+    };*/
+    //-------------//
 
     $scope.chooseCont = function (id) {
         var checkbox       = document.getElementById("check_" + id),
@@ -61,6 +81,7 @@ mainApp.controller("listController", function ($scope, $http) {
          * Show action_bar if there are some checked items.
          */
         $scope.show_action_bar(action_bar, checked_exists);
+        alert(id);
     };
 
     $scope.chooseAll = function () {

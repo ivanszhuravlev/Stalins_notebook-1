@@ -13,44 +13,44 @@ using Stalins_notebook.Models;
 
 namespace Stalins_notebook.Controllers
 {
-    public class Contacts2Controller : ApiController
+    public class GroupsController : ApiController
     {
         private NotebookContext db = new NotebookContext();
 
-        // GET: api/Contacts2
-        public IQueryable<Contact> GetContacts()
+        // GET: api/Groups
+        public IQueryable<Group> GetGroups()
         {
-            return db.Contacts;
+            return db.Groups.OrderBy(g=>g.Name);
         }
 
-        // GET: api/Contacts2/5
-        [ResponseType(typeof(Contact))]
-        public async Task<IHttpActionResult> GetContact(int id)
+        // GET: api/Groups/5
+        [ResponseType(typeof(Group))]
+        public async Task<IHttpActionResult> GetGroup(int id)
         {
-            Contact contact = await db.Contacts.FindAsync(id);
-            if (contact == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return NotFound();
             }
 
-            return Ok(contact);
+            return Ok(group);
         }
 
-        // PUT: api/Contacts2/5
+        // PUT: api/Groups/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutContact(int id, Contact contact)
+        public async Task<IHttpActionResult> PutGroup(int id, Group group)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contact.ContactId)
+            if (id != group.GroupId)
             {
                 return BadRequest();
             }
 
-            db.Entry(contact).State = EntityState.Modified;
+            db.Entry(group).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace Stalins_notebook.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactExists(id))
+                if (!GroupExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,36 @@ namespace Stalins_notebook.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Contacts2
-        [ResponseType(typeof(Contact))]
-        public async Task<IHttpActionResult> PostContact(Contact contact)
+        // POST: api/Groups
+        [ResponseType(typeof(Group))]
+        public async Task<IHttpActionResult> PostGroup(Group group)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Contacts.Add(contact);
+            group.ModifiedDate = DateTime.Now.Date;
+            db.Groups.Add(group);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = contact.ContactId }, contact);
+            return CreatedAtRoute("DefaultApi", new { id = group.GroupId }, group);
         }
 
-        // DELETE: api/Contacts2/5
-        [ResponseType(typeof(Contact))]
-        public async Task<IHttpActionResult> DeleteContact(int id)
+        
+        // DELETE: api/Groups/5
+        [ResponseType(typeof(Group))]
+        public async Task<IHttpActionResult> DeleteGroup(int id)
         {
-            Contact contact = await db.Contacts.FindAsync(id);
-            if (contact == null)
+            Group group = await db.Groups.FindAsync(id);
+            if (group == null)
             {
                 return NotFound();
             }
 
-            db.Contacts.Remove(contact);
+            db.Groups.Remove(group);
             await db.SaveChangesAsync();
 
-            return Ok(contact);
+            return Ok(group);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +112,9 @@ namespace Stalins_notebook.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ContactExists(int id)
+        private bool GroupExists(int id)
         {
-            return db.Contacts.Count(e => e.ContactId == id) > 0;
+            return db.Groups.Count(e => e.GroupId == id) > 0;
         }
     }
 }

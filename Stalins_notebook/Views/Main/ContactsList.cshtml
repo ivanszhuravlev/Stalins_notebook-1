@@ -1,4 +1,5 @@
 ﻿<div class="contact" id="cont_{{contact.ContactId}}" ng-repeat="contact in model.contacts">
     <span class="checkbox" id="check_{{contact.ContactId}}" ng-click="chooseCont(contact.ContactId)"></span>
     <span class="info">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>    
+    <span class="markers" ng-controller="membersgroupController" ng-include="pathmarker"></span>
 </div>
