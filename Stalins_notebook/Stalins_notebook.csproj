@@ -155,6 +155,7 @@
     <Content Include="scripts\controllers\contactController.js" />
     <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
+    <Content Include="scripts\controllers\mainController.js" />
     <Content Include="scripts\controllers\membersgroupController.js" />
     <Content Include="scripts\index.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
@@ -209,6 +210,8 @@
     <Content Include="Views\ViewMembersGroup\InfoMarkersContact.cshtml" />
     <Content Include="Views\ViewMembersGroup\InfoMarkersGroup.cshtml" />
     <Content Include="Views\ViewMembersGroup\MembersGroupList.cshtml" />
+    <Content Include="Views\ViewGroup\ActionBarGroup.cshtml" />
+    <Content Include="Views\Main\ActionBarContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

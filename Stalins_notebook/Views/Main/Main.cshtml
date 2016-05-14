@@ -18,13 +18,14 @@
     </header>
     <content>
         <!--////////////       Left-side part  with list cintact begin       ////////////////////-->
+
         <aside ng-controller="listController">
             <div class="action-menu">
-                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
-                <div class="action-bar" id="contacts_actions">
-                    <button class="delete-button" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
-                    <button><i class="material-icons">email</i></button>
-                    <button ng-controller="membersgroupController" ng-click="addMembers()"><i class="material-icons">group_add</i></button>
+                <div class="switch">
+                    <button id="show-contacts" ng-click="changeList('contacts')">Контакты</button>
+                    <button id="show-group" ng-click="changeList('groups')">Группы</button>
+                </div>
+                <div ng-include="list_type">
                 </div>
             </div>
             <div class="list-wrapper">

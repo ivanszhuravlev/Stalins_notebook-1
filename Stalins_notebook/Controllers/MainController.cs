@@ -29,6 +29,10 @@ namespace Stalins_notebook.Controllers
         {
             return PartialView();
         }
+        public ActionResult ActionBarContact()
+        {
+            return PartialView();
+        }
 
     }
 }

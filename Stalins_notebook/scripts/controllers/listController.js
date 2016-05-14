@@ -3,6 +3,26 @@
 mainApp.controller("listController", function ($scope, $http) {
     $scope.model = model;
     $scope.path = '/Main/ContactsList';
+    $scope.list_type = '/Main/ActionBarContact';
+
+    $scope.changeList = function (type) {
+        if (type == 'contacts') {
+            $scope.list_type = '/Main/ActionBarContact';
+            $scope.path = '/Main/ContactsList';
+        }
+        else {
+            $scope.list_type = '/ViewGroup/ActionBarGroup';
+            $scope.path = '/ViewGroup/GroupsList';
+        }
+        console.log($scope.list_type);
+    }
+
+    $http.get("/api/Groups").success(function (data) {
+        $scope.model.groups = data;
+
+    }).error(function (message) {
+        console.log("Error " + message);
+    });
 
     $http.get("/api/Contacts").success(function (data) {
         $scope.model.contacts = data;
@@ -10,17 +30,19 @@ mainApp.controller("listController", function ($scope, $http) {
         console.log("Error " + message);
     });
 
-    $scope.deleteContacts = function () {
-        var ids = $scope.model.choosed_contacts.sort().reverse(),
-            contact;
+
+
+    $scope.deleteitems = function () {
+        var ids = $scope.model.choosed_items.sort().reverse(),
+            item;
         ids.forEach(function (id, index, ids) {
-            deleteContactsHandler(id);
+            deleteitemsHandler(id);
         });
     };
 
-    function deleteContactsHandler(id) {
-        $http.delete("/api/Contacts/" + id + "").success(function (data) {
-            var index = $scope.model.contacts.indexOf(data);
+    function deleteitemsHandler(id) {
+        $http.delete("/api/items/" + id + "").success(function (data) {
+            var index = $scope.model.items.indexOf(data);
             
         });
     };
@@ -28,8 +50,8 @@ mainApp.controller("listController", function ($scope, $http) {
     //add to group
    /* $scope.addMembers = function () {
         var ids=[]
-        for (var i = 0; i < $scope.model.choosed_contacts.length; i++) {
-            ids[i]=$scope.model.choosed_contacts[i].ContactId;
+        for (var i = 0; i < $scope.model.choosed_items.length; i++) {
+            ids[i]=$scope.model.choosed_items[i].itemId;
         }
        
         
@@ -39,37 +61,37 @@ mainApp.controller("listController", function ($scope, $http) {
 
     function addMembersHandler(ids) {
         $http.post("/api/Groups/" + JSON.stringify(ids) + "").success(function (data) {
-            var index = $scope.model.contacts.indexOf(data);
+            var index = $scope.model.items.indexOf(data);
             alert(index);
         });
     };*/
     //-------------//
 
-    $scope.chooseCont = function (id) {
+    $scope.chooseItem = function (id) {
         var checkbox       = document.getElementById("check_" + id),
             checkbox_all   = document.getElementById("check_all"),
-            contacts       = document.getElementsByClassName("contact"),
-            contact        = document.getElementById("cont_" + id),
-            action_bar     = document.getElementById("contacts_actions"),
+            items       = document.getElementsByClassName("item"),
+            item        = document.getElementById("item_" + id),
+            action_bar     = document.getElementById("items_actions"),
             checked_exists = false,
             found = false;
 
-        $scope.check_decorate(checkbox, contact);
+        $scope.check_decorate(checkbox, item);
 
         $scope.add_remove(checkbox, id);
 
         /**
          * Check if there are checked items in list
          */
-        for (var i = 0; i < contacts.length; i++) {
-            if (contacts[i].classList.contains("checked")) {
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].classList.contains("checked")) {
                 checked_exists = true;
                 break
             }
         }
 
         if (!checked_exists) {
-            $scope.model.choosed_contacts.splice(0, $scope.model.choosed_contacts.length);
+            $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
         }
 
         /**
@@ -86,16 +108,16 @@ mainApp.controller("listController", function ($scope, $http) {
 
     $scope.chooseAll = function () {
         var checkbox         = document.getElementById("check_all"),
-            contacts         = document.getElementsByClassName("contact"),
-            action_bar       = document.getElementById("contacts_actions"),
+            items         = document.getElementsByClassName("item"),
+            action_bar       = document.getElementById("items_actions"),
             checked_exists   = false,
             unchecked_exists = false;
 
         /**
          * Check if there are checked and unchecked items in list
          */
-        for (var i = 0; i < contacts.length; i++) {
-            if (contacts[i].classList.contains("checked")) {
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].classList.contains("checked")) {
                 checked_exists = true;
             } else {
                 unchecked_exists = true;
@@ -110,12 +132,12 @@ mainApp.controller("listController", function ($scope, $http) {
          * checked and unchecked ones at the same time
          */
         if (checked_exists && unchecked_exists) {
-            for (var i = 0; i < contacts.length; i++) {
-                var cont_checkbox = contacts[i].getElementsByClassName("checkbox")[0];
+            for (var i = 0; i < items.length; i++) {
+                var item_checkbox = items[i].getElementsByClassName("checkbox")[0];
 
-                $scope.model.choosed_contacts.splice(0, $scope.model.choosed_contacts.length);
+                $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
 
-                $scope.reset_check(cont_checkbox, contacts[i]);
+                $scope.reset_check(item_checkbox, items[i]);
             }
         }
 
@@ -123,12 +145,12 @@ mainApp.controller("listController", function ($scope, $http) {
         /**
          * Check all items
          */
-        for (var i = 0; i < contacts.length; i++) {
-            var cont_checkbox = contacts[i].getElementsByClassName("checkbox")[0];
+        for (var i = 0; i < items.length; i++) {
+            var item_checkbox = items[i].getElementsByClassName("checkbox")[0];
 
-            $scope.model.choosed_contacts.push($scope.model.contacts[i].Id);
+            $scope.model.choosed_items.push($scope.model.items[i].Id);
             
-            $scope.check_decorate(cont_checkbox, contacts[i]);
+            $scope.check_decorate(item_checkbox, items[i]);
         }
 
         checked_exists = false;
@@ -136,15 +158,15 @@ mainApp.controller("listController", function ($scope, $http) {
         /**
          * Check if there are checked items in list
          */
-        for (var i = 0; i < contacts.length; i++) {
-            if (contacts[i].classList.contains("checked")) {
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].classList.contains("checked")) {
                 checked_exists = true;
                 break
             }
         }
 
         if (!checked_exists) {
-            $scope.model.choosed_contacts.splice(0, $scope.model.choosed_contacts.length);
+            $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
         }
 
         /**
@@ -170,14 +192,14 @@ mainApp.controller("listController", function ($scope, $http) {
     }
 
     $scope.add_remove = function (checkbox, id) {
-        var index = $scope.model.choosed_contacts.indexOf(id);
+        var index = $scope.model.choosed_items.indexOf(id);
 
         if (checkbox.classList.contains("checked")) {
             if (index == -1) {
-                $scope.model.choosed_contacts.push(id);
+                $scope.model.choosed_items.push(id);
             }
         } else {
-            $scope.model.choosed_contacts.splice(index, 1);
+            $scope.model.choosed_items.splice(index, 1);
         }
 
     }
