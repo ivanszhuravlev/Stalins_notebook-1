@@ -153,6 +153,7 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\controllers\contactController.js" />
+    <Content Include="scripts\controllers\createController.js" />
     <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
     <Content Include="scripts\controllers\mainController.js" />

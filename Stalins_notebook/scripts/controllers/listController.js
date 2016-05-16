@@ -5,30 +5,33 @@ mainApp.controller("listController", function ($scope, $http) {
     $scope.path = '/Main/ContactsList';
     $scope.list_type = '/Main/ActionBarContact';
 
-    $scope.changeList = function (type) {
-        if (type == 'contacts') {
-            $scope.list_type = '/Main/ActionBarContact';
-            $scope.path = '/Main/ContactsList';
-        }
-        else {
-            $scope.list_type = '/ViewGroup/ActionBarGroup';
-            $scope.path = '/ViewGroup/GroupsList';
-        }
-        console.log($scope.list_type);
-    }
-
     $http.get("/api/Groups").success(function (data) {
         $scope.model.groups = data;
-
     }).error(function (message) {
         console.log("Error " + message);
     });
 
     $http.get("/api/Contacts").success(function (data) {
         $scope.model.contacts = data;
-    }).error(function (message) {
-        console.log("Error " + message);
-    });
+        }).error(function (message) {
+            console.log("Error " + message);
+        });
+
+    $scope.changeList = function (type) {
+        if (type == 'contacts') {
+            $scope.list_type = '/Main/ActionBarContact';
+            $scope.path = '/Main/ContactsList';
+            $scope.model.flag="flagContact"
+        }
+        else {
+            $scope.list_type = '/ViewGroup/ActionBarGroup';
+            $scope.path = '/ViewGroup/GroupsList';
+            $scope.model.flag = "flagGroup"
+        }
+        console.log($scope.list_type);
+    }
+
+    
 
 
 
@@ -41,8 +44,10 @@ mainApp.controller("listController", function ($scope, $http) {
     };
 
     function deleteitemsHandler(id) {
-        $http.delete("/api/items/" + id + "").success(function (data) {
-            var index = $scope.model.items.indexOf(data);
+        flagtype = $scope.model.flag == "flagContact" ? "Contacts" : "Groups";
+        $http.delete("/api/"+flagtype+"/" + id + "").success(function (data) {
+            var index = $scope.model.flag == "flagContact" ? $scope.model.contacts.indexOf(data) : $scope.model.groups.indexOf(data);
+            alert(flagtype);
             
         });
     };
@@ -66,7 +71,7 @@ mainApp.controller("listController", function ($scope, $http) {
         });
     };*/
     //-------------//
-
+    
     $scope.chooseItem = function (id) {
         var checkbox       = document.getElementById("check_" + id),
             checkbox_all   = document.getElementById("check_all"),
@@ -108,7 +113,7 @@ mainApp.controller("listController", function ($scope, $http) {
 
     $scope.chooseAll = function () {
         var checkbox         = document.getElementById("check_all"),
-            items         = document.getElementsByClassName("item"),
+            items            = document.getElementsByClassName("item"),
             action_bar       = document.getElementById("items_actions"),
             checked_exists   = false,
             unchecked_exists = false;
@@ -148,7 +153,7 @@ mainApp.controller("listController", function ($scope, $http) {
         for (var i = 0; i < items.length; i++) {
             var item_checkbox = items[i].getElementsByClassName("checkbox")[0];
 
-            $scope.model.choosed_items.push($scope.model.items[i].Id);
+            $scope.model.choosed_items.push($scope.model.flag == "flagContact" ? $scope.model.contacts[i].Id : $scope.model.groups[i].Id); 
             
             $scope.check_decorate(item_checkbox, items[i]);
         }

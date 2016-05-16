@@ -35,56 +35,32 @@
         <!--////////////       Left-side part  with list cintact end       ////////////////////-->
 
         <!--////////////       Middle part   begin        ////////////////////-->
-        <div class="right-side" ng-controller="contactController">
+        <div class="right-side" ng-controller="createController">
             <div class="action-menu">
-                <button class="add-contact" ng-click="addContactForm()">
+                <button class="add-contact" ng-click="createContactForm()">
                     <div><i class="material-icons md-18">add</i></div>
                     <div>Новый контакт</div>
                 </button>
-            </div>
-            <div class="output">
-                <div ng-include="path"></div>
-            </div>
-        </div>
-
-        <div class="right-side" ng-controller="groupController">
-            <div class="action-menu">
-                <button class="right-side add-contact" ng-click="createEditGroupForm()">
+                <button class="right-side add-contact" ng-click="createGroupForm()">
                     <div><i class="material-icons md-18">add</i></div>
                     <div>Новая группа</div>
                 </button>
             </div>
             <div class="output">
-                <div ng-include="path"></div>  
+                <div ng-include="create"></div>
             </div>
+
         </div>
-
-        <!--////////////       Middle part        end   ////////////////////-->
-
-        <!--////////////       Right-side part  with list group begin       ////////////////////-->
-        <aside ng-controller="groupController">
-            <div class="action-menu">
-                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
-                <div class="action-bar" id="groups_actions">
-                    <button class="delete-button" ng-click="deleteGroups()"><i class="material-icons">delete</i></button>
-                    <button><i class="material-icons">email</i></button>
-                    <button class="right-side" ng-click="createEditGroupForm()"><i class="material-icons">add</i></button>
-                </div>
-            </div>
-            <div class="list-wrapper">
-                <div class="list-groups" ng-include="pathgroup"></div>
-            </div>
-        </aside>
-        <!--////////////       Right-side part  with list group end    ////////////////////-->
+        
+        
     </content>
     <script>
         var model = {
             contacts: [],
-            choosed_contacts: [],
             groups: [],
-            choosed_groups: [],
             infomarkersgroup: [],
-
+            flag:"flagContact",
+            choosed_items: [],
             showgroup: []
 
         };
@@ -96,5 +72,6 @@
     <script src="~/scripts/controllers/listController.js"></script>
     <script src="~/scripts/controllers/groupController.js"></script>
     <script src="~/scripts/controllers/membersgroupController.js"></script>
+    <script src="~/scripts/controllers/createController.js"></script>
 </body>
 </html>
