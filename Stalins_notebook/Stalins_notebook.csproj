@@ -152,11 +152,10 @@
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
-    <Content Include="scripts\controllers\contactController.js" />
     <Content Include="scripts\controllers\createController.js" />
+    <Content Include="scripts\controllers\editController.js" />
     <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
-    <Content Include="scripts\controllers\mainController.js" />
     <Content Include="scripts\controllers\membersgroupController.js" />
     <Content Include="scripts\index.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
@@ -172,14 +171,20 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActionBarController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\CreateController.cs" />
+    <Compile Include="Controllers\DeleteController.cs" />
+    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
-    <Compile Include="Controllers\Index.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\ItemsListController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MarkersOfGroupController.cs" />
     <Compile Include="Controllers\MembersGroupController.cs" />
+    <Compile Include="Controllers\POSTPONEDMembersGroupsController.cs" />
     <Compile Include="Controllers\MOCController.cs" />
-    <Compile Include="Controllers\ViewGroupController.cs" />
+    <Compile Include="Controllers\ShowItemController.cs" />
     <Compile Include="Controllers\ViewMembersGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,19 +205,23 @@
     <Content Include="Content\img\logo.psd" />
     <Content Include="Content\img\logo_min.psd" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Main\AddContactForm.cshtml" />
-    <Content Include="Views\Main\ContactsList.cshtml" />
+    <Content Include="Views\Create\CreateContactForm.cshtml" />
+    <Content Include="Views\ItemsList\ContactsList.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\ViewGroup\CreateEditGroupForm.cshtml" />
-    <Content Include="Views\ViewGroup\Group.cshtml" />
-    <Content Include="Views\ViewGroup\GroupsList.cshtml" />
+    <Content Include="Views\Create\CreateGroupForm.cshtml" />
+    <Content Include="Views\ShowItem\Group.cshtml" />
+    <Content Include="Views\ItemsList\GroupsList.cshtml" />
     <Content Include="Views\ViewMembersGroup\InfoMarkersContact.cshtml" />
     <Content Include="Views\ViewMembersGroup\InfoMarkersGroup.cshtml" />
     <Content Include="Views\ViewMembersGroup\MembersGroupList.cshtml" />
-    <Content Include="Views\ViewGroup\ActionBarGroup.cshtml" />
-    <Content Include="Views\Main\ActionBarContact.cshtml" />
+    <Content Include="Views\ActionBar\ActionBarGroup.cshtml" />
+    <Content Include="Views\ActionBar\ActionBarContact.cshtml" />
+    <Content Include="Views\Edit\EditContactForm.cshtml" />
+    <Content Include="Views\Edit\EditGroupForm.cshtml" />
+    <Content Include="Views\ShowItem\Contact.cshtml" />
+    <Content Include="Views\ItemsList\MembersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,8 +230,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Contacts1\" />
-    <Folder Include="Views\Contacts\" />
+    <Folder Include="Views\Delete\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

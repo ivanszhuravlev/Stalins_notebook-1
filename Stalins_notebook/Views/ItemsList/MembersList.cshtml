@@ -1,0 +1,13 @@
+﻿<div class="item contact"
+     id="item_{{group.GroupId}}"
+     ng-repeat="group in model.groups">
+    <span class="checkbox"
+          id="check_{{group.GroupId}}"
+          ng-click="chooseItem(group.GroupId,group)">
+
+    </span>
+    <span class="info">
+        {{group.Name}}
+        {{group.Note}}
+    </span>
+</div>

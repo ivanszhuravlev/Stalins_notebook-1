@@ -16,10 +16,10 @@
             <a href="/Index/Index">Выход</a>
         </nav>
     </header>
-    <content>
+    <content ng-controller="listController">
         <!--////////////       Left-side part  with list cintact begin       ////////////////////-->
 
-        <aside ng-controller="listController">
+        <aside >
             <div class="action-menu">
                 <div class="switch">
                     <button id="show-contacts" ng-click="changeList('contacts')">Контакты</button>
@@ -47,7 +47,10 @@
                 </button>
             </div>
             <div class="output">
+                <div ng-include="show"></div>
                 <div ng-include="create"></div>
+                <div ng-include="edit"></div>
+                
             </div>
 
         </div>
@@ -58,17 +61,18 @@
         var model = {
             contacts: [],
             groups: [],
+            members: [],
             infomarkersgroup: [],
             flag:"flagContact",
             choosed_items: [],
-            showgroup: []
+            currentitem: []
 
         };
 
         var mainApp = angular.module("mainApp", []);
     </script>
     
-    <script src="~/scripts/controllers/contactController.js"></script>
+    
     <script src="~/scripts/controllers/listController.js"></script>
     <script src="~/scripts/controllers/groupController.js"></script>
     <script src="~/scripts/controllers/membersgroupController.js"></script>

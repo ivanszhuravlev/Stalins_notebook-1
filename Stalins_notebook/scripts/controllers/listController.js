@@ -1,31 +1,38 @@
 ﻿var mainApp = angular.module("mainApp");
 
 mainApp.controller("listController", function ($scope, $http) {
+    $scope.show = '';
+
     $scope.model = model;
-    $scope.path = '/Main/ContactsList';
-    $scope.list_type = '/Main/ActionBarContact';
+    $scope.path = '/ItemsList/ContactsList';
+    $scope.list_type = '/ActionBar/ActionBarContact';
 
     $http.get("/api/Groups").success(function (data) {
         $scope.model.groups = data;
     }).error(function (message) {
         console.log("Error " + message);
     });
+    $http.get("/api/Groups").success(function (data) {
+        $scope.model.groups = data;
+    }).error(function (message) {
+        console.log("Error " + message);
+    });
 
-    $http.get("/api/Contacts").success(function (data) {
-        $scope.model.contacts = data;
+    $http.get("/api/MembersGroup").success(function (data) {
+        $scope.model.members = data;
         }).error(function (message) {
             console.log("Error " + message);
         });
 
     $scope.changeList = function (type) {
         if (type == 'contacts') {
-            $scope.list_type = '/Main/ActionBarContact';
-            $scope.path = '/Main/ContactsList';
+            $scope.list_type = '/ActionBar/ActionBarContact';
+            $scope.path = '/ItemsList/ContactsList';
             $scope.model.flag="flagContact"
         }
         else {
-            $scope.list_type = '/ViewGroup/ActionBarGroup';
-            $scope.path = '/ViewGroup/GroupsList';
+            $scope.list_type = '/ActionBar/ActionBarGroup';
+            $scope.path = '/ItemsList/GroupsList';
             $scope.model.flag = "flagGroup"
         }
         console.log($scope.list_type);
@@ -72,14 +79,21 @@ mainApp.controller("listController", function ($scope, $http) {
     };*/
     //-------------//
     
-    $scope.chooseItem = function (id) {
+    $scope.chooseItem = function (id,currentitem) {
         var checkbox       = document.getElementById("check_" + id),
             checkbox_all   = document.getElementById("check_all"),
             items       = document.getElementsByClassName("item"),
-            item        = document.getElementById("item_" + id),
+            item = document.getElementById("item_" + id),
             action_bar     = document.getElementById("items_actions"),
             checked_exists = false,
             found = false;
+
+        $scope.model.currentitem = currentitem;
+        $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
+        if ($scope.model.flag != "flagContact")
+        {
+
+        }
 
         $scope.check_decorate(checkbox, item);
 
@@ -109,6 +123,8 @@ mainApp.controller("listController", function ($scope, $http) {
          */
         $scope.show_action_bar(action_bar, checked_exists);
         alert(id);
+        
+
     };
 
     $scope.chooseAll = function () {

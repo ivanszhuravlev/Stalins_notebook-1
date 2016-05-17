@@ -5,7 +5,7 @@ mainApp.controller("createController", function ($scope, $http) {
     $scope.model = model;
 
     $scope.createContactForm = function () {
-        $scope.create = '/Main/AddContactForm';
+        $scope.create = '/Create/CreateContactForm';
     }
 
     $scope.createContact = function (contact, addContactForm) {
@@ -20,7 +20,7 @@ mainApp.controller("createController", function ($scope, $http) {
     }
 
     $scope.createGroupForm = function () {
-        $scope.create = '/ViewGroup/CreateEditGroupForm';
+        $scope.create = '/Create/CreateGroupForm';
     }
 
     $scope.createGroup = function (group, createEditGroupForm) {
@@ -32,6 +32,7 @@ mainApp.controller("createController", function ($scope, $http) {
         });
         $scope.create = ''
     }
+
     
  
 });

@@ -13,49 +13,28 @@ using Stalins_notebook.Models;
 
 namespace Stalins_notebook.Controllers
 {
-    public class MembersGroupController : ApiController
+    public class MembersGroupsController : ApiController
     {
         private NotebookContext db = new NotebookContext();
 
         // GET: api/MembersGroups
         public IQueryable<MembersGroup> GetMembersGroups()
         {
-            return db.MembersGroups.OrderBy(mg=>mg.GroupId).ThenBy(mg=>mg.MemberId);
+            return db.MembersGroups;
         }
-        //Get groups of member
+
         // GET: api/MembersGroups/5
-        [ResponseType(typeof(List<MembersGroup>))]
-        public async Task<IHttpActionResult> GetGroupsOfMember(Contact member)
+        [ResponseType(typeof(MembersGroup))]
+        public async Task<IHttpActionResult> GetMembersGroup(int id)
         {
-            int idmember = member.ContactId;
-            List<MembersGroup> groupsMemberArray = await db.MembersGroups.Where(c=>c.MemberId==idmember).ToListAsync();
-            if (groupsMemberArray == null)
+            MembersGroup membersGroup = await db.MembersGroups.FindAsync(id);
+            if (membersGroup == null)
             {
                 return NotFound();
             }
 
-            return Ok(groupsMemberArray);
+            return Ok(membersGroup);
         }
-        //Get Members Of Current Group
-        // GET: api/MembersGroups/5
-       /* [ResponseType(typeof(List<Contact>))]
-        public async Task<IHttpActionResult> GetMembersOfCurrentGroup(Group group)
-        {
-            int idgroup = group.GroupId;
-            int[] idsMember= await db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g=>g.MemberId).ToArrayAsync();
-            List<Contact> membersGroupArray = new List<Contact>();
-            for(int i=0;i<idsMember.Count();i++)
-            {
-                membersGroupArray.Add(await db.Contacts.FindAsync(idsMember[i]));
-            }
-            if (membersGroupArray == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(membersGroupArray);
-        }*/
-      
 
         // PUT: api/MembersGroups/5
         [ResponseType(typeof(void))]
@@ -96,23 +75,16 @@ namespace Stalins_notebook.Controllers
         [ResponseType(typeof(MembersGroup))]
         public async Task<IHttpActionResult> PostMembersGroup(MembersGroup membersGroup)
         {
-            var temp = db.MembersGroups.Where(g => g.GroupId == membersGroup.GroupId).Where(m => m.MemberId == membersGroup.MemberId).ToList();
-            
-            if (!(temp.Count()>0))
+            if (!ModelState.IsValid)
             {
-                if (membersGroup.GroupId != 0 && membersGroup.MemberId != 0)
-                {
-                    membersGroup.ModifiedDate = DateTime.Now.Date;
-                    db.MembersGroups.Add(membersGroup);
-                    await db.SaveChangesAsync();
-                }
-                
+                return BadRequest(ModelState);
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = membersGroup.MembersGroupId}, membersGroup);
+            db.MembersGroups.Add(membersGroup);
+            await db.SaveChangesAsync();
 
+            return CreatedAtRoute("DefaultApi", new { id = membersGroup.MembersGroupId }, membersGroup);
         }
-       
 
         // DELETE: api/MembersGroups/5
         [ResponseType(typeof(MembersGroup))]
