@@ -1,0 +1,19 @@
+﻿<div class="add-contact showgroup"
+     id="group_{{model.currentitem.GroupId}}">
+    <div>
+        <p>Название: {{model.currentitem.Name}}</p> 
+        <p>Заметка:  {{model.currentitem.Note}}</p> 
+        <p>Описание: {{model.currentitem.Description}}</p>
+    </div>
+   
+    <button ng-click="showMembers(model.showgroup.GroupId)">Добавить учатников</button>
+
+    
+
+   <!-- <div  ng-controller="membersgroupController">
+        
+            <button ng-click="showMembers(model.showgroup.GroupId)">Показать всех учатников</button>
+       
+    </div>-->
+</div>
+
