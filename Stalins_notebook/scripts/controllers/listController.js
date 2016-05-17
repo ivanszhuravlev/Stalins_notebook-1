@@ -12,8 +12,8 @@ mainApp.controller("listController", function ($scope, $http) {
     }).error(function (message) {
         console.log("Error " + message);
     });
-    $http.get("/api/Groups").success(function (data) {
-        $scope.model.groups = data;
+    $http.get("/api/Contacts").success(function (data) {
+        $scope.model.contacts = data;
     }).error(function (message) {
         console.log("Error " + message);
     });
@@ -90,10 +90,7 @@ mainApp.controller("listController", function ($scope, $http) {
 
         $scope.model.currentitem = currentitem;
         $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
-        if ($scope.model.flag != "flagContact")
-        {
-
-        }
+        
 
         $scope.check_decorate(checkbox, item);
 
