@@ -17,7 +17,6 @@ mainApp.controller("contactController", function ($scope, $http) {
 
         if (phone_format.exec(contact.Telephone1)) {
             contact.Telephone1 = contact.Telephone1.replace(/-/g, "");
-            alert(contact.Telephone1);
             $http.post("/api/Contacts", contact).success(function (data) {
                 $scope.model.contacts.unshift(data);
             });
