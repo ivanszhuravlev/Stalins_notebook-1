@@ -48,11 +48,11 @@ namespace Stalins_notebook.Models
         [DisplayName("Телефон 1")]
         [DataType(DataType.PhoneNumber)]
         //  [Required(ErrorMessage = "Пожалуйта, введите телефон")]
-        public int? Telephone1 { get; set; }
+        public string Telephone1 { get; set; }
         [DisplayName("Телефон 2")]
         [DataType(DataType.PhoneNumber)]
         //  [Required(ErrorMessage = "Пожалуйта, введите телефон")]
-        public int? Telephone2 { get; set; }
+        public string Telephone2 { get; set; }
 
         
 
