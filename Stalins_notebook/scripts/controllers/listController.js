@@ -40,15 +40,21 @@ mainApp.controller("listController", function ($scope, $http) {
     {
         alert("Хотим получить список участников");
         $scope.pathmembers = '';
-        $http.get("/api/MembersGroups/"+idgroup).success(function (data) {
+        alert(HELLOOOOOOOOOOOOOOOOOOO);
+        alert("Хотим отправить запрос:"+"/api/MembersGroups/"+idgroup);
+        $http.post("/api/MembersGroups/"+idgroup).success(function (data) {
             alert(data);
             alert("/api/MembersGroups/"+idgroup);                                     /*!!!!!!!!!!   Ошибка в передачи данных с сервера иои отправки на сервер*/
             $scope.model.members = data;
             
         }).error(function (message) {
             console.log("Error " + message);
+            alert("Ошибка получить список участников");
         });
-        alert("Ошибка получить список участников");
+        for (i = 1; i < $scope.model.members.length; i++)
+        {
+            alert($scope.model.members[i])
+        }
         $scope.pathmembers = '/ItemsList/MembersList';
     }
 

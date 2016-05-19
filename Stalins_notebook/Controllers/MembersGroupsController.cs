@@ -18,44 +18,45 @@ namespace Stalins_notebook.Controllers
         private NotebookContext db = new NotebookContext();
 
         // GET: api/MembersGroups
-        public IQueryable<MembersGroup> GetMembersGroups()
-        {
-            return db.MembersGroups.OrderBy(mg=>mg.GroupId).ThenBy(mg=>mg.MemberId);
-        }
+        /*  public IQueryable<MembersGroup> GetMembersGroups()
+          {
+              return db.MembersGroups.OrderBy(mg=>mg.GroupId).ThenBy(mg=>mg.MemberId);
+          }*/
         //Get groups of member
         // GET: api/MembersGroups/5
-       /* [ResponseType(typeof(List<MembersGroup>))]
-        public async Task<IHttpActionResult> GetGroupsOfMember(Contact member)
-        {
-            int idmember = member.ContactId;
-            List<MembersGroup> groupsMemberArray = await db.MembersGroups.Where(c=>c.MemberId==idmember).ToListAsync();
-            if (groupsMemberArray == null)
-            {
-                return NotFound();
-            }
+        /* [ResponseType(typeof(List<MembersGroup>))]
+         public async Task<IHttpActionResult> GetGroupsOfMember(Contact member)
+         {
+             int idmember = member.ContactId;
+             List<MembersGroup> groupsMemberArray = await db.MembersGroups.Where(c=>c.MemberId==idmember).ToListAsync();
+             if (groupsMemberArray == null)
+             {
+                 return NotFound();
+             }
 
-            return Ok(groupsMemberArray);
-        }*/
+             return Ok(groupsMemberArray);
+         }*/
         //Get Members Of Current Group
         // GET: api/MembersGroups/5
-       // [ResponseType(typeof(List<Contact>))]
-       /* public async Task<IHttpActionResult> GetMembersOfCurrentGroup(Group group)
-        {
-            int idgroup = group.GroupId;
-            int[] idsMember= await db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g=>g.MemberId).ToArrayAsync();
-            List<Contact> membersGroupArray = new List<Contact>();
-            for(int i=0;i<idsMember.Count();i++)
-            {
-                membersGroupArray.Add(await db.Contacts.FindAsync(idsMember[i]));
-            }
-            if (membersGroupArray == null)
-            {
-                return NotFound();
-            }
+        // [ResponseType(typeof(List<Contact>))]
+        /* public async Task<IHttpActionResult> GetMembersOfCurrentGroup(Group group)
+         {
+             int idgroup = group.GroupId;
+             int[] idsMember= await db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g=>g.MemberId).ToArrayAsync();
+             List<Contact> membersGroupArray = new List<Contact>();
+             for(int i=0;i<idsMember.Count();i++)
+             {
+                 membersGroupArray.Add(await db.Contacts.FindAsync(idsMember[i]));
+             }
+             if (membersGroupArray == null)
+             {
+                 return NotFound();
+             }
 
-            return Ok(membersGroupArray);
-        }*/
-        public IQueryable<Contact> GetMembersOfCurrentGroup(int idgroup)
+             return Ok(membersGroupArray);
+         }*/
+        [ResponseType(typeof(List<Contact>))]
+        public IHttpActionResult Get(int idgroup)
         {
             //int idgroup = group.GroupId;
             int[] idsMember =  db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g => g.MemberId).ToArray();
@@ -65,7 +66,7 @@ namespace Stalins_notebook.Controllers
                 membersGroupArray.Add( db.Contacts.Find(idsMember[i]));
             }
            
-            return membersGroupArray.OrderBy(c=>c.ContactId).AsQueryable();
+            return Ok(membersGroupArray);
         }
 
         // PUT: api/MembersGroups/5
