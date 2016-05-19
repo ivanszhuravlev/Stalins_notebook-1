@@ -1,5 +1,9 @@
 ﻿var mainApp = angular.module("mainApp");
 
+mainApp.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype):/);
+}])
+
 mainApp.controller("contactController", function ($scope, $http) {
     $scope.path = '';
     $scope.model = model;
@@ -13,11 +17,8 @@ mainApp.controller("contactController", function ($scope, $http) {
 
         if (phone_format.exec(contact.Telephone1)) {
             contact.Telephone1 = contact.Telephone1.replace(/-/g, "");
-
             alert(contact.Telephone1);
-
             $http.post("/api/Contacts", contact).success(function (data) {
-                console.log(data);
                 $scope.model.contacts.unshift(data);
             });
         } else {
