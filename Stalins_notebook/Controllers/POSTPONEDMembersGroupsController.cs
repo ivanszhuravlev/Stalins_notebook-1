@@ -13,7 +13,7 @@ using Stalins_notebook.Models;
 
 namespace Stalins_notebook.Controllers
 {
-    public class MembersGroupsController : ApiController
+    public class MembersGroups1Controller : ApiController
     {
         private NotebookContext db = new NotebookContext();
 

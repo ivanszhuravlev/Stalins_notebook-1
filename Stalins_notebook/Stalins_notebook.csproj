@@ -181,7 +181,7 @@
     <Compile Include="Controllers\ItemsListController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MarkersOfGroupController.cs" />
-    <Compile Include="Controllers\MembersGroupController.cs" />
+    <Compile Include="Controllers\MembersGroupsController.cs" />
     <Compile Include="Controllers\POSTPONEDMembersGroupsController.cs" />
     <Compile Include="Controllers\MOCController.cs" />
     <Compile Include="Controllers\ShowItemController.cs" />

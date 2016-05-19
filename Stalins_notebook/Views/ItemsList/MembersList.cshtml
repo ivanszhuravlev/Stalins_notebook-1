@@ -1,13 +1,8 @@
-﻿<div class="item contact"
-     id="item_{{group.GroupId}}"
-     ng-repeat="group in model.groups">
-    <span class="checkbox"
-          id="check_{{group.GroupId}}"
-          ng-click="chooseItem(group.GroupId,group)">
+﻿<div class="item contact" id="item_{{member.ContactId}}" ng-repeat="member in model.members">
+    <span class="checkbox" id="check_{{member.ContactId}}" ng-click="chooseItem(member.ContactId,member)"></span>
+    <span class="info">{{member.LastName}} {{member.FirstName}} {{member.MiddleName}}</span>
+    
 
-    </span>
-    <span class="info">
-        {{group.Name}}
-        {{group.Note}}
-    </span>
+    <script>alert("Привет")</script>
+    <script>alert($scope.members[0].ContactId)</script>
 </div>

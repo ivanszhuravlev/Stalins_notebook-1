@@ -13,7 +13,7 @@ using Stalins_notebook.Models;
 
 namespace Stalins_notebook.Controllers
 {
-    public class MembersGroupController : ApiController
+    public class MembersGroupsController : ApiController
     {
         private NotebookContext db = new NotebookContext();
 
@@ -24,7 +24,7 @@ namespace Stalins_notebook.Controllers
         }
         //Get groups of member
         // GET: api/MembersGroups/5
-        [ResponseType(typeof(List<MembersGroup>))]
+       /* [ResponseType(typeof(List<MembersGroup>))]
         public async Task<IHttpActionResult> GetGroupsOfMember(Contact member)
         {
             int idmember = member.ContactId;
@@ -35,11 +35,11 @@ namespace Stalins_notebook.Controllers
             }
 
             return Ok(groupsMemberArray);
-        }
+        }*/
         //Get Members Of Current Group
         // GET: api/MembersGroups/5
-       /* [ResponseType(typeof(List<Contact>))]
-        public async Task<IHttpActionResult> GetMembersOfCurrentGroup(Group group)
+       // [ResponseType(typeof(List<Contact>))]
+       /* public async Task<IHttpActionResult> GetMembersOfCurrentGroup(Group group)
         {
             int idgroup = group.GroupId;
             int[] idsMember= await db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g=>g.MemberId).ToArrayAsync();
@@ -55,7 +55,18 @@ namespace Stalins_notebook.Controllers
 
             return Ok(membersGroupArray);
         }*/
-      
+        public IQueryable<Contact> GetMembersOfCurrentGroup(int idgroup)
+        {
+            //int idgroup = group.GroupId;
+            int[] idsMember =  db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g => g.MemberId).ToArray();
+            List<Contact> membersGroupArray = new List<Contact>();
+            for (int i = 0; i < idsMember.Count(); i++)
+            {
+                membersGroupArray.Add( db.Contacts.Find(idsMember[i]));
+            }
+           
+            return membersGroupArray.OrderBy(c=>c.ContactId).AsQueryable();
+        }
 
         // PUT: api/MembersGroups/5
         [ResponseType(typeof(void))]

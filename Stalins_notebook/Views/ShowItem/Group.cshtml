@@ -5,10 +5,9 @@
         <p>Заметка:  {{model.currentitem.Note}}</p> 
         <p>Описание: {{model.currentitem.Description}}</p>
     </div>
-   
-    <button ng-click="showMembers(model.showgroup.GroupId)">Добавить учатников</button>
+    <button ng-click="membersList(model.currentitem.GroupId)">Учатники</button>
+        
 
-    
 
    <!-- <div  ng-controller="membersgroupController">
         
@@ -17,3 +16,4 @@
     </div>-->
 </div>
 
+<div ng-include="pathmembers"> </div>

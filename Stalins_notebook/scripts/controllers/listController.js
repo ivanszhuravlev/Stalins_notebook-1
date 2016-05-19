@@ -5,30 +5,29 @@ mainApp.controller("listController", function ($scope, $http) {
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
+    $scope.pathmembers = '';
     $scope.list_type = '/ActionBar/ActionBarContact';
 
     $http.get("/api/Groups").success(function (data) {
         $scope.model.groups = data;
+        alert(data);
     }).error(function (message) {
         console.log("Error " + message);
     });
     $http.get("/api/Contacts").success(function (data) {
         $scope.model.contacts = data;
+        alert(data);
     }).error(function (message) {
         console.log("Error " + message);
     });
 
-    $http.get("/api/MembersGroup").success(function (data) {
-        $scope.model.members = data;
-        }).error(function (message) {
-            console.log("Error " + message);
-        });
+   
 
     $scope.changeList = function (type) {
         if (type == 'contacts') {
             $scope.list_type = '/ActionBar/ActionBarContact';
             $scope.path = '/ItemsList/ContactsList';
-            $scope.model.flag="flagContact"
+            $scope.model.flag = "flagContact"
         }
         else {
             $scope.list_type = '/ActionBar/ActionBarGroup';
@@ -36,6 +35,21 @@ mainApp.controller("listController", function ($scope, $http) {
             $scope.model.flag = "flagGroup"
         }
         console.log($scope.list_type);
+    }
+    $scope.membersList = function (idgroup)
+    {
+        alert("Хотим получить список участников");
+        $scope.pathmembers = '';
+        $http.get("/api/MembersGroups/"+idgroup).success(function (data) {
+            alert(data);
+            alert("/api/MembersGroups/"+idgroup);                                     /*!!!!!!!!!!   Ошибка в передачи данных с сервера иои отправки на сервер*/
+            $scope.model.members = data;
+            
+        }).error(function (message) {
+            console.log("Error " + message);
+        });
+        alert("Ошибка получить список участников");
+        $scope.pathmembers = '/ItemsList/MembersList';
     }
 
     
@@ -91,6 +105,23 @@ mainApp.controller("listController", function ($scope, $http) {
         $scope.model.currentitem = currentitem;
         $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
         
+        /*if ($scope.model.flag != "flagContact")
+        {
+            $scope.list_type = '/ActionBar/ActionBarGroup';
+            $scope.path = '/ItemsList/GroupsList';
+            for(var i=0;i<$scope.model.members.length;i++)
+            {
+                if($scope.model.members.GroupId==$scope.model.currentitem.GroupId)
+                {
+                    for (var j = 0; j < items.length; j++) {
+                        if (items[j].classList.contains("ite")) {
+                            checked_exists = true;
+                            break
+                        }
+                    }
+                }
+            }
+        }*/
 
         $scope.check_decorate(checkbox, item);
 

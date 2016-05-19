@@ -257,6 +257,7 @@ div.list-contacts {
 
         div.contact.checked {
             color: #B5ADAD !important;
+            background-color:salmon;
         }
 
             .checkbox {
@@ -289,3 +290,8 @@ div.list-contacts {
             display: none;
         }
 
+.output
+{
+    display:inline-block;
+    margin-right:10px;
+}

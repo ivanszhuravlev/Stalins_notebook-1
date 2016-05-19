@@ -28,11 +28,32 @@ mainApp.controller("createController", function ($scope, $http) {
         $http.post("/api/Groups", group).success(function (data) {
             console.log(data);
             $scope.model.groups.unshift(data);
-            $scope.showGroup(data);
+            
         });
         $scope.create = ''
     }
 
-    
+
+    $scope.createMembers = function () {
+        var idsMember = $scope.model.choosed_contacts;
+        var idGroup = $scope.model.currentitem.GroupId;
+        idsMember.forEach(function (idcurrentMember, index, idsMember) {
+            addMembersHandler(idcurrentMember, idGroup[0]);
+        });
+    };
+
+    function createMembersHandler(idcurrentMember, idGroup) {
+        alert(idGroup + " " + idcurrentMember);
+        var membergroup =
+            {
+                MemberId: idcurrentMember,
+                GroupId: idGroup
+            };
+        $http.post("/api/MembersGroups/", membergroup).success(function () {
+
+            alert("good");
+        });
+    };
+
  
 });
