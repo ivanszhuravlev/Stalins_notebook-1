@@ -35,10 +35,10 @@ mainApp.controller("createController", function ($scope, $http) {
 
 
     $scope.createMembers = function () {
-        var idsMember = $scope.model.choosed_contacts;
+        var idsMember = $scope.model.choosed_items;
         var idGroup = $scope.model.currentitem.GroupId;
         idsMember.forEach(function (idcurrentMember, index, idsMember) {
-            addMembersHandler(idcurrentMember, idGroup[0]);
+            createMembersHandler(idcurrentMember, idGroup);
         });
     };
 
@@ -49,8 +49,9 @@ mainApp.controller("createController", function ($scope, $http) {
                 MemberId: idcurrentMember,
                 GroupId: idGroup
             };
-        $http.post("/api/MembersGroups/", membergroup).success(function () {
-
+        $http.post("/api/MembersGroups/", membergroup).success(function (data) {
+            console.log(data);
+            $scope.model.members.unshift(data);
             alert("good");
         });
     };

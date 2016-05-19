@@ -1,5 +1,11 @@
-﻿<div class="item contact" id="item_{{contact.ContactId}}" ng-repeat="contact in model.contacts">
+﻿<div class="item contact" id="item_{{contact.ContactId}}" ng-repeat="contact in model.contacts" 
+     >
+    <!--ng-mouseenter="showMarkers(contact.ContactId)"
+ng-mouseleave="showMarkers(contact.ContactId)"-->
+
     <span class="checkbox" id="check_{{contact.ContactId}}" ng-click="chooseItem(contact.ContactId,contact)"></span>
-    <span class="info">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>
-    <span class="markers" ng-controller="membersgroupController" ng-include="pathmarker"></span>
+    <span class="info" ng-click="showItem(contact.ContactId,contact)">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>
+    
+    <div class="REDBOX" style="background-color:red;height:30px;width:30px" ng-click="showMarkers(contact.ContactId)"><span class="markers" ng-include="pathmarkers"></span></div>
+    
 </div>

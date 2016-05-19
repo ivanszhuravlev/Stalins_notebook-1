@@ -20,5 +20,9 @@ namespace Stalins_notebook.Controllers
         {
             return PartialView();
         }
+        public ActionResult MarkersList()
+        {
+            return PartialView();
+        }
     }
 }

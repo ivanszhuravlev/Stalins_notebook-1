@@ -2,6 +2,7 @@
 
 mainApp.controller("listController", function ($scope, $http) {
     $scope.show = '';
+    $scope.pathmarkers = '';
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
@@ -25,37 +26,60 @@ mainApp.controller("listController", function ($scope, $http) {
 
     $scope.changeList = function (type) {
         if (type == 'contacts') {
+            $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
             $scope.list_type = '/ActionBar/ActionBarContact';
             $scope.path = '/ItemsList/ContactsList';
-            $scope.model.flag = "flagContact"
+            
+            $scope.model.flag = "flagContact";
+            alert($scope.model.choosed_items);
         }
         else {
+            $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
             $scope.list_type = '/ActionBar/ActionBarGroup';
             $scope.path = '/ItemsList/GroupsList';
-            $scope.model.flag = "flagGroup"
+            $scope.model.flag = "flagGroup";
+            alert($scope.model.choosed_items);
         }
         console.log($scope.list_type);
     }
-    $scope.membersList = function (idgroup)
-    {
+
+    $scope.membersList = function (idgroup) {
         alert("Хотим получить список участников");
         $scope.pathmembers = '';
-        alert(HELLOOOOOOOOOOOOOOOOOOO);
-        alert("Хотим отправить запрос:"+"/api/MembersGroups/"+idgroup);
-        $http.post("/api/MembersGroups/"+idgroup).success(function (data) {
-            alert(data);
-            alert("/api/MembersGroups/"+idgroup);                                     /*!!!!!!!!!!   Ошибка в передачи данных с сервера иои отправки на сервер*/
+        $http.get("/api/MembersGroups/" + idgroup + "").success(function (data) {
             $scope.model.members = data;
-            
+
         }).error(function (message) {
             console.log("Error " + message);
             alert("Ошибка получить список участников");
         });
-        for (i = 1; i < $scope.model.members.length; i++)
+        $scope.pathmembers = '/ItemsList/MembersList';
+    }
+
+
+        $scope.showMarkers = function (idcontact)
+    {
+    alert("Хотим получить список участников");
+    $scope.pathmarkers = '';
+    $http.get("/api/Markers/"+idcontact+"").success(function (data) {
+        $scope.model.markers = data
+        
+        alert("Список учатсников получен "+data);
+        }).error(function (message) {
+        console.log("Error " + message);
+        alert("Ошибка получить список групп для контакта");
+    });
+        /*for (i = 1; i < $scope.model.members.length; i++)
         {
+            alert("Цикл Странная штуковина");
             alert($scope.model.members[i])
         }
-        $scope.pathmembers = '/ItemsList/MembersList';
+        alert("Странная штуковина");
+        alert("Количество участников в группе:" + $scope.model.members.length)*/
+        //!!!!!!!!!! Оказываетс когд мы в это программе что -то присваимваем скоп, то потом если исопльзовать в этой 
+            //же функции он не обновляется, сохраняется предудыщее значени, но если мы выйдем из функции, то всё сохранится, проверял !!!!! Очень и очень странно
+    alert($scope.model.markers);
+    $scope.pathmarkers = '/ItemsList/MarkersList';
     }
 
     
@@ -108,12 +132,12 @@ mainApp.controller("listController", function ($scope, $http) {
             checked_exists = false,
             found = false;
 
-        $scope.model.currentitem = currentitem;
-        $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
+        //$scope.model.currentitem = currentitem;
+        //$scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
         
-        /*if ($scope.model.flag != "flagContact")
-        {
-            $scope.list_type = '/ActionBar/ActionBarGroup';
+       // if ($scope.model.flag != "flagContact")
+       // {
+           /* $scope.list_type = '/ActionBar/ActionBarGroup';
             $scope.path = '/ItemsList/GroupsList';
             for(var i=0;i<$scope.model.members.length;i++)
             {
@@ -126,8 +150,9 @@ mainApp.controller("listController", function ($scope, $http) {
                         }
                     }
                 }
-            }
-        }*/
+            }*/
+           // $scope.pathmembers = '';
+       // }
 
         $scope.check_decorate(checkbox, item);
 
@@ -160,6 +185,95 @@ mainApp.controller("listController", function ($scope, $http) {
         
 
     };
+    $scope.chooseMember = function (id, currentitem) {
+        var checkbox = document.getElementById("check_" + id),
+            checkbox_all = document.getElementById("check_all"),
+            items = document.getElementsByClassName("item"),
+            item = document.getElementById("item_" + id),
+            action_bar = document.getElementById("items_actions"),
+            checked_exists = false,
+            found = false;
+        $scope.check_decorate(checkbox, item);
+        $scope.add_remove(checkbox, id);
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].classList.contains("checked")) {
+                checked_exists = true;
+                break
+            }
+        }
+
+        if (!checked_exists) {
+            $scope.model.choosed_members.splice(0, $scope.model.choosed_members.length);
+        }
+
+        $scope.check_global(checkbox_all, checked_exists);
+        $scope.show_action_bar(action_bar, checked_exists);
+        alert(id);
+    };
+
+    $scope.showItem = function (id, currentitem) {
+        var checkbox = document.getElementById("check_" + id),
+            checkbox_all = document.getElementById("check_all"),
+            items = document.getElementsByClassName("item"),
+            item = document.getElementById("item_" + id),
+            action_bar = document.getElementById("items_actions");
+           // checked_exists = false,
+           // found = false;
+
+        $scope.model.currentitem = currentitem;
+        $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
+
+        if ($scope.model.flag != "flagContact") {
+            /* $scope.list_type = '/ActionBar/ActionBarGroup';
+             $scope.path = '/ItemsList/GroupsList';
+             for(var i=0;i<$scope.model.members.length;i++)
+             {
+                 if($scope.model.members.GroupId==$scope.model.currentitem.GroupId)
+                 {
+                     for (var j = 0; j < items.length; j++) {
+                         if (items[j].classList.contains("ite")) {
+                             checked_exists = true;
+                             break
+                         }
+                     }
+                 }
+             }*/
+            $scope.pathmembers = '';
+        }
+
+     //   $scope.check_decorate(checkbox, item);
+
+      //  $scope.add_remove(checkbox, id);
+
+        /**
+         * Check if there are checked items in list
+         */
+      //  for (var i = 0; i < items.length; i++) {
+       //     if (items[i].classList.contains("checked")) {
+        //        checked_exists = true;
+       //         break
+       //     }
+       // }
+
+       // if (!checked_exists) {
+       //     $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
+       // }
+
+        /**
+         * Check global checkbox if there are some checked items.
+         */
+       // $scope.check_global(checkbox_all, checked_exists);
+
+        /**
+         * Show action_bar if there are some checked items.
+         */
+       // $scope.show_action_bar(action_bar, checked_exists);
+        alert(id);
+
+
+    };
+
+
 
     $scope.chooseAll = function () {
         var checkbox         = document.getElementById("check_all"),
@@ -256,7 +370,6 @@ mainApp.controller("listController", function ($scope, $http) {
         } else {
             $scope.model.choosed_items.splice(index, 1);
         }
-
     }
 
     $scope.check_global = function (checkbox_global, checked_exists) {

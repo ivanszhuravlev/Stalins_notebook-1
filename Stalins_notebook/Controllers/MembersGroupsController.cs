@@ -56,21 +56,21 @@ namespace Stalins_notebook.Controllers
              return Ok(membersGroupArray);
          }*/
         [ResponseType(typeof(List<Contact>))]
-        public IHttpActionResult Get(int idgroup)
+        public IHttpActionResult GetMembersByCurrentGroups(int id)
         {
-            //int idgroup = group.GroupId;
+            int idgroup = id;
             int[] idsMember =  db.MembersGroups.Where(g => g.GroupId == idgroup).Select(g => g.MemberId).ToArray();
             List<Contact> membersGroupArray = new List<Contact>();
             for (int i = 0; i < idsMember.Count(); i++)
             {
                 membersGroupArray.Add( db.Contacts.Find(idsMember[i]));
             }
-           
+            
             return Ok(membersGroupArray);
         }
 
         // PUT: api/MembersGroups/5
-        [ResponseType(typeof(void))]
+       /* [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMembersGroup(int id, MembersGroup membersGroup)
         {
             if (!ModelState.IsValid)
@@ -103,9 +103,9 @@ namespace Stalins_notebook.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        */
         // POST: api/MembersGroups
-        [ResponseType(typeof(MembersGroup))]
+        //[ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> PostMembersGroup(MembersGroup membersGroup)
         {
             var temp = db.MembersGroups.Where(g => g.GroupId == membersGroup.GroupId).Where(m => m.MemberId == membersGroup.MemberId).ToList();
@@ -117,6 +117,9 @@ namespace Stalins_notebook.Controllers
                     membersGroup.ModifiedDate = DateTime.Now.Date;
                     db.MembersGroups.Add(membersGroup);
                     await db.SaveChangesAsync();
+                    Contact contact = new Contact();
+                    contact = db.Contacts.Find(membersGroup.MemberId);
+                    return CreatedAtRoute("DefaultApi", new { id = membersGroup.MemberId}, contact);
                 }
                 
             }
@@ -155,5 +158,6 @@ namespace Stalins_notebook.Controllers
         {
             return db.MembersGroups.Count(e => e.MembersGroupId == id) > 0;
         }
+        
     }
 }

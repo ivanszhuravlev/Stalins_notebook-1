@@ -15,7 +15,7 @@ namespace Stalins_notebook.Controllers
 {
     public class MembersGroups1Controller : ApiController
     {
-        private NotebookContext db = new NotebookContext();
+       /* private NotebookContext db = new NotebookContext();
 
         // GET: api/MembersGroups
         public IQueryable<MembersGroup> GetMembersGroups()
@@ -114,6 +114,6 @@ namespace Stalins_notebook.Controllers
         private bool MembersGroupExists(int id)
         {
             return db.MembersGroups.Count(e => e.MembersGroupId == id) > 0;
-        }
+        }*/
     }
 }

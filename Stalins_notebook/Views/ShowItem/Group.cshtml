@@ -1,19 +1,23 @@
-﻿<div class="add-contact showgroup"
-     id="group_{{model.currentitem.GroupId}}">
-    <div>
-        <p>Название: {{model.currentitem.Name}}</p> 
-        <p>Заметка:  {{model.currentitem.Note}}</p> 
-        <p>Описание: {{model.currentitem.Description}}</p>
+﻿<content>
+    <div class="add-contact showgroup"
+         id="group_{{model.currentitem.GroupId}}">
+        <div>
+            <p>Название: {{model.currentitem.Name}}</p>
+            <p>Заметка:  {{model.currentitem.Note}}</p>
+            <p>Описание: {{model.currentitem.Description}}</p>
+        </div>
+        <button ng-click="membersList(model.currentitem.GroupId)">Учатники</button>
     </div>
-    <button ng-click="membersList(model.currentitem.GroupId)">Учатники</button>
-        
 
-
-   <!-- <div  ng-controller="membersgroupController">
-        
-            <button ng-click="showMembers(model.showgroup.GroupId)">Показать всех учатников</button>
-       
-    </div>-->
-</div>
-
-<div ng-include="pathmembers"> </div>
+    <aside>
+        <div class="action-menu">
+            <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
+            <div class="action-bar" id="item_actions">
+                <button class="delete-button" ng-controller="deleteController" ng-click="deleteMembers()"><i class="material-icons">delete</i></button>
+            </div>
+        </div>
+        <div class="list-wrapper">
+            <div class="list-contacts" ng-include="pathmembers"></div>
+        </div>
+    </aside>
+</content>

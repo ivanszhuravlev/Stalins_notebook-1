@@ -278,12 +278,13 @@ div.list-contacts {
                     font-size: 12px;
                     content: 'done';
                     margin: -1px 0 0 0px;
+                    
                 }
 
 
             .info {
-                display: inline-flex; 
-                cursor: pointer;  
+               display: inline-flex;
+               cursor: pointer;  
             }
 
         input[type="checkbox"] {

@@ -153,8 +153,8 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\controllers\createController.js" />
+    <Content Include="scripts\controllers\deleteController.js" />
     <Content Include="scripts\controllers\editController.js" />
-    <Content Include="scripts\controllers\groupController.js" />
     <Content Include="scripts\controllers\listController.js" />
     <Content Include="scripts\controllers\membersgroupController.js" />
     <Content Include="scripts\index.js" />
@@ -180,12 +180,13 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ItemsListController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MarkersController.cs" />
     <Compile Include="Controllers\MarkersOfGroupController.cs" />
+    <Compile Include="Controllers\MembersByGroupsController.cs" />
     <Compile Include="Controllers\MembersGroupsController.cs" />
     <Compile Include="Controllers\POSTPONEDMembersGroupsController.cs" />
     <Compile Include="Controllers\MOCController.cs" />
     <Compile Include="Controllers\ShowItemController.cs" />
-    <Compile Include="Controllers\ViewMembersGroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     <Content Include="Views\Edit\EditGroupForm.cshtml" />
     <Content Include="Views\ShowItem\Contact.cshtml" />
     <Content Include="Views\ItemsList\MembersList.cshtml" />
+    <Content Include="Views\ItemsList\MarkersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
