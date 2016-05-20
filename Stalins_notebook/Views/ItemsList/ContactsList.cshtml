@@ -2,6 +2,11 @@
     <!--ng-mouseenter="showMarkers(contact.ContactId)"
 ng-mouseleave="showMarkers(contact.ContactId)"-->
 
-    <span class="checkbox" id="check_{{contact.ContactId}}" ng-click="chooseItem(contact.ContactId,contact)"></span>
-    <span class="info" ng-click="showItem(contact.ContactId, contact)">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>
+    <div>
+        <span class="checkbox" id="check_{{contact.ContactId}}" ng-click="chooseCont(contact.ContactId)"></span>
+        <span class="info">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>
+    </div>
+    <a href="skype:{{contact.Telephone1}}?call" class="call-button">
+        <i class="material-icons">call</i>
+    </a>
 </div>

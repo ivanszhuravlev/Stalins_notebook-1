@@ -1,5 +1,9 @@
 ﻿var mainApp = angular.module("mainApp");
 
+mainApp.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype):/);
+}]);
+
 mainApp.controller("createController", function ($scope, $http) {
     $scope.create = '';
     $scope.model = model;
@@ -9,12 +13,16 @@ mainApp.controller("createController", function ($scope, $http) {
     }
 
     $scope.createContact = function (contact, addContactForm) {
+        var phone_format = /\+7\d{3}-\d{3}-\d{2}-\d{2}/;
 
-        $http.post("/api/Contacts", contact).success(function (data) {
-            console.log(data);
-            $scope.model.contacts.unshift(data);
-
-        });
+        if (phone_format.exec(contact.Telephone1)) {
+            contact.Telephone1 = contact.Telephone1.replace(/-/g, "");
+            $http.post("/api/Contacts", contact).success(function (data) {
+                $scope.model.contacts.unshift(data);
+            });
+        } else {
+            alert("fail");
+        }
 
         $scope.create = '';
     }
@@ -26,9 +34,7 @@ mainApp.controller("createController", function ($scope, $http) {
     $scope.createGroup = function (group, createEditGroupForm) {
 
         $http.post("/api/Groups", group).success(function (data) {
-            console.log(data);
             $scope.model.groups.unshift(data);
-            
         });
         $scope.create = ''
     }
