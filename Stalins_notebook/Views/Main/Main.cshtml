@@ -17,24 +17,20 @@
         </nav>
     </header>
     <content ng-controller="listController">
-        <!--////////////       Left-side part  with list cintact begin       ////////////////////-->
-
         <aside >
-            <div class="action-menu">
-                <div class="switch">
-                    <button id="show-contacts" ng-click="changeList('contacts')">Контакты</button>
-                    <button id="show-group" ng-click="changeList('groups')">Группы</button>
+            <div class="action-menu left-menu">
+                <div class="specific-func" ng-include="list_type">
                 </div>
-                <div ng-include="list_type">
+                <select class="switch-list" ng-model="selectedItem" ng-change="changeList(selectedItem)">
+                    <option value="contacts">Контакты</option>
+                    <option value="groups">Группы</option>
+                </select>
                 </div>
             </div>
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
             </div>
         </aside>
-        <!--////////////       Left-side part  with list cintact end       ////////////////////-->
-
-        <!--////////////       Middle part   begin        ////////////////////-->
         <div class="right-side" ng-controller="createController">
             <div class="action-menu">
                 <button class="add-contact" ng-click="createContactForm()">
