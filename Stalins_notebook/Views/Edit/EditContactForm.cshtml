@@ -1,0 +1,15 @@
+﻿<form class="add-contact">
+    <input type="text" id="LastName" placeholder="Фамилия"  ng-required="required" ng-model="contact.LastName" value="{{model.currentitem.FirstName}}" />
+    <input type="text" id="FirstName" placeholder="Имя" ng-required="required" ng-model="contact.FirstName" />
+    <input type="text" id="MiddleName" placeholder="Отчество"  ng-required="required" ng-model="contact.MiddleName" />
+    <input type="tel" id="Telephone1" placeholder="Телефон"  ng-required="required" ng-model="contact.Telephone1" />
+    <input type="text" id="City" placeholder="Город"  ng-required="required" ng-model="contact.City" />
+    <!--<input type="text" id="Email" placeholder="E-mail" />
+    <input type="text" id="Work" placeholder="Работа" />
+    <input type="text" id="Position" placeholder="Должность" />
+    <input type="text" id="Chief" placeholder="Прямой руководитель" />-->
+
+    <button ng-click="editContact(contact, editContactForm)">
+        Добавить контакт
+    </button>
+</form>

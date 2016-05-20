@@ -13,21 +13,10 @@ namespace Stalins_notebook.Controllers
 {
     public class MainController : Controller
     {
-        private NotebookContext db = new NotebookContext();
 
         public ActionResult Main()
         {
             return View();
-        }
-
-        public ActionResult AddContactForm()
-        {
-            return PartialView();
-        }
-
-        public ActionResult ContactsList()
-        {
-            return PartialView();
         }
 
     }

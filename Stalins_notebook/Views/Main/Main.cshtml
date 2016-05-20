@@ -16,43 +16,65 @@
             <a href="/Index/Index">Выход</a>
         </nav>
     </header>
-    <content>
-        <aside ng-controller="listController">
-            <div class="action-menu">
-                <span class="checkbox" id="check_all" ng-click="chooseAll()"></span>
-                <div class="action-bar" id="contacts_actions">
-                    <button class="delete-button" ng-click="deleteContacts()"><i class="material-icons">delete</i></button>
-                    <button><i class="material-icons">email</i></button>
-                    <button><i class="material-icons">group_add</i></button>
+    <content ng-controller="listController">
+        <aside >
+            <div class="action-menu left-menu">
+                <div class="specific-func" ng-include="list_type">
+                </div>
+                <select class="switch-list" ng-model="selectedItem" ng-change="changeList(selectedItem)">
+                    <option value="contacts">Контакты</option>
+                    <option value="groups">Группы</option>
+                </select>
                 </div>
             </div>
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
             </div>
         </aside>
-        <div class="right-side" ng-controller="contactController">
+        <div class="right-side" ng-controller="createController">
             <div class="action-menu">
-                <button class="add-contact" ng-click="addContactForm()">
+                <button class="add-contact" ng-click="createContactForm()">
                     <div><i class="material-icons md-18">add</i></div>
                     <div>Новый контакт</div>
                 </button>
+                <button class="right-side add-contact" ng-click="createGroupForm()">
+                    <div><i class="material-icons md-18">add</i></div>
+                    <div>Новая группа</div>
+                </button>
             </div>
             <div class="output">
-                <div ng-include="path"></div>
+                <div  ng-include="show"></div>
+                <div ng-include="create"></div>
+                <div  ng-include="edit"></div>
+                
             </div>
+
         </div>
+        
+        
     </content>
     <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
     <script>
         var model = {
             contacts: [],
-            choosed_contacts: []
+            groups: [],
+            members: [],
+            infomarkersgroup: [],
+            flag:"flagContact",
+            choosed_items: [],
+            choosed_members: [],
+            currentitem: [],
+            markers:[]
+
         };
 
         var mainApp = angular.module("mainApp", []);
     </script>
-    <script src="~/scripts/methods/checkboxes.js"></script>
-    <script src="~/scripts/controllers/contactController.js"></script>
+    
+    
     <script src="~/scripts/controllers/listController.js"></script>
+    <script src="~/scripts/controllers/createController.js"></script>
+    <script src="~/scripts/controllers/deleteController.js"></script>
+    <script src="~/scripts/controllers/editController.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+﻿<div class="item contact" id="item_{{member.ContactId}}" ng-repeat="member in model.members">
+    <span class="checkbox" id="check_{{member.ContactId}}" ng-click="chooseMember(member.ContactId,member)"></span>
+    <span class="info">{{member.LastName}} {{member.FirstName}} {{member.MiddleName}}</span>
+</div>
