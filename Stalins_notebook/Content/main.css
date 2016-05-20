@@ -246,13 +246,9 @@ div.list-contacts {
         box-sizing: border-box;
         color: #696464;
         border-bottom: 1px solid #ececec;
-        cursor: pointer;
         flex-flow: row;
         align-items: center;
-    }
-
-    div.list-contacts div.contact:hover{
-        color: #d77e79;
+        justify-content: space-between;
     }
 
         div.contact.checked {
@@ -281,11 +277,33 @@ div.list-contacts {
 
 
             .info {
-                display: inline-flex; 
+                display: inline-flex;
                 cursor: pointer;  
+                align-self: stretch;
             }
+
+                .info:hover {
+                    color: #d77e79;
+                }
 
         input[type="checkbox"] {
             display: none;
         }
+
+        .call-button {
+            display: inline-flex; 
+            cursor: pointer; 
+            text-decoration: none;
+            color: #B5ADAD;
+        }
+
+            .call-button:hover {
+                color: #69c6b2;
+            }
+
+            .call-button i {
+                font-size: 20px;
+            }
+
+
 
