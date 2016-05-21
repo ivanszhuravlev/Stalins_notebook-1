@@ -237,11 +237,19 @@ content {
                 color: #696464;
                 font-size: 14px;
             }
+                
+                div.output .show-item p {
+                    line-height: 30px;
+                    font-size: 13px;
+                }
 
                 div.output .show-item .label {
-                    padding: 2px 9px;
-                    margin-right: 9px;
-                    border-right: 2px solid #d77e79;
+                    color: #ffffff;
+                    font-size: 12px;
+                    background: #B5ADAD;
+                    padding: 4px 12px;
+                    margin-right: 13px;
+                    border-radius: 2px;
                 }
 
             div.output form.add-contact {
