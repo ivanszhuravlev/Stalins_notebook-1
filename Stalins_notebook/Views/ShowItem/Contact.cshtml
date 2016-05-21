@@ -1,23 +1,34 @@
-﻿<form class="add-contact">
-    <button ng-click="editForm()"><i class="material-icons">edit</i></button>
-    
-    <p>Фамилия</p>
-    <input type="text" id="LastName" placeholder="Фамилия" ng-model="model.currentitem.LastName" ng-disabled="notdataedit.visible" />
-    <p>Имя</p>
-    <input type="text" id="FirstName" placeholder="Имя" ng-model="model.currentitem.FirstName" ng-disabled="notdataedit.visible"/>
-    <p>Отчество</p>
-    <input type="text" id="MiddleName" placeholder="Отчество" ng-model="model.currentitem.MiddleName" ng-disabled="notdataedit.visible" />
-    <p>Телефон (+7XXX-XXX-XX-XX)</p>
-    <input type="text" id="Telephone1" placeholder="Телефон (+7XXX-XXX-XX-XX)" ng-model="model.currentitem.Telephone1" ng-disabled="notdataedit.visible"/>
-    <p>Адрес</p>
-    <input type="text" id="Address" placeholder="Адрес" ng-model="model.currentitem.Address"ng-disabled="notdataedit.visible" />
-    <!--<input type="text" id="Email" placeholder="E-mail" />
-    <input type="text" id="Work" placeholder="Работа" />
-    <input type="text" id="Position" placeholder="Должность" />
-    <input type="text" id="Chief" placeholder="Прямой руководитель" />-->
+﻿<form class="edit-item">
+    <button class="edit" ng-click="editForm()"><i class="material-icons">edit</i></button>
+    ﻿<div class="show-item" id="contact_{{model.currentitem.ContactId}}">
+        <div>
+            <span class="label">Фамилия</span>
+            <input type="text" id="LastName" placeholder="Фамилия" ng-model="model.currentitem.LastName" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Имя</span>
+            <input type="text" id="FirstName" placeholder="Имя" ng-model="model.currentitem.FirstName" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Отчество</span>
+            <input type="text" id="MiddleName" placeholder="Отчество" ng-model="model.currentitem.MiddleName" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Адрес</span>
+            <input type="text" id="Address" placeholder="Адрес" ng-model="model.currentitem.Address" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Телефон</span>
+            <input type="text" id="Telephone1" placeholder="Телефон (+7XXX-XXX-XX-XX)" ng-model="model.currentitem.Telephone1" ng-disabled="notdataedit.visible" />
+        </div>
+            <!--<input type="text" id="Email" placeholder="E-mail" />
+            <input type="text" id="Work" placeholder="Работа" />
+            <input type="text" id="Position" placeholder="Должность" />
+            <input type="text" id="Chief" placeholder="Прямой руководитель" />-->
 
-    <button  ng-click="editContact(model.currentitem, editContactForm)" ng-hide="notdataedit.visible">
-        Сохранить изменения
-    </button>
-
+        <button class="save" ng-click="editContact(model.currentitem, editContactForm)" ng-hide="notdataedit.visible">
+            Сохранить изменения
+        </button>
+        
+    </div>
 </form>

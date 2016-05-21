@@ -194,12 +194,13 @@ mainApp.controller("listController", function ($scope, $http) {
         alert(id);
     };
 
-    $scope.showItem = function (id, currentitem) {
-        var checkbox = document.getElementById("check_" + id),
+    $scope.showItem = function (currentitem) {
+        var id = currentitem.Id,
+            checkbox = document.getElementById("check_" + id),
             checkbox_all = document.getElementById("check_all"),
-            items = document.getElementsByClassName("item"),
-            item = document.getElementById("item_" + id),
-            action_bar = document.getElementById("items_actions");
+            items        = document.getElementsByClassName("item"),
+            item         = document.getElementById("item_" + id),
+            action_bar   = document.getElementById("items_actions");
 
 
         $scope.notdataedit.visible = true;

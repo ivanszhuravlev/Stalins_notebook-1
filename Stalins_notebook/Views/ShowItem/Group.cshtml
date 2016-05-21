@@ -1,29 +1,21 @@
-﻿<content>
-    <form class="add-contact">
-        <button ng-click="editForm()"><i class="material-icons">edit</i></button>
-        <p>Название</p>
-        <input type="text" id="Name" placeholder="Название" ng-model="model.currentitem.Name" ng-disabled="notdataedit.visible" />
-        <p>Заметка</p>
-        <input type="text" id="Note" placeholder="Заметка" ng-model="model.currentitem.Note" ng-disabled="notdataedit.visible" />
-        <p>Описание</p>
-        <input type="text" id="Description" placeholder="Описание" ng-model="model.currentitem.Description" ng-disabled="notdataedit.visible" />
-
-        <button ng-click="editGroup(model.currentitem, editGroupForm)" ng-hide="notdataedit.visible">
-            Сохранить изменения
-        </button>
-        <button ng-click="membersList(model.currentitem.GroupId)">Участники</button>
-    </form>
-
-    <aside>
-        <div class="action-menu">
-            <!--<span class="checkbox" id="membercheck_all" ng-click="chooseAll()"></span>-->
-            <div class="action-bar" id="members_actions">
-                <button class="delete-button" ng-controller="deleteController" ng-click="deleteMembers()"><i class="material-icons">delete</i></button>
-            </div>
+﻿<form class="edit-item">
+    <button class="edit" ng-click="editForm()"><i class="material-icons">edit</i></button>
+    ﻿<div class="show-item" id="group_{{model.currentitem.GroupId}}">
+        <div>
+            <span class="label">Название</span>
+            <input type="text" id="Name" placeholder="Название" ng-model="model.currentitem.Name" ng-disabled="notdataedit.visible" />
         </div>
-        <div class="list-wrapper">
-            <div class="list-contacts" ng-include="pathmembers"></div>
+        <div>
+            <span class="label">Заметка</span>
+            <input type="text" id="Note" placeholder="Заметка" ng-model="model.currentitem.Note" ng-disabled="notdataedit.visible" />
         </div>
-    </aside>
-</content>
-
+        <div>
+            <span class="label">Описание</span>
+            <input type="text" id="Description" placeholder="Описание" ng-model="model.currentitem.Description" ng-disabled="notdataedit.visible" />
+        </div>
+        
+         <button class="save" ng-click="editGroup(model.currentitem, editGroupForm)" ng-hide="notdataedit.visible">
+             Сохранить изменения
+         </button>
+    </div>
+</form>
