@@ -131,10 +131,11 @@ namespace Stalins_notebook.Controllers
 
         // DELETE: api/MembersGroups/5
         [ResponseType(typeof(MembersGroup))]
-        public async Task<IHttpActionResult> DeleteMembersGroup(int id)
+        public async Task<IHttpActionResult> DeleteMembersGroup(Pair pair)
         {
-            MembersGroup membersGroup = await db.MembersGroups.FindAsync();
-            //int idmg = db.MembersGroups.Where(mg=>mg.GroupId==pair)Select(mg=>mg.MembersGroupId).;
+            
+            int idmg = db.MembersGroups.Where(mg=>mg.GroupId==pair.idgroup).Where(mg=>mg.MemberId==pair.idcontact).Select(mg=>mg.MembersGroupId).ToList().First();
+            MembersGroup membersGroup = await db.MembersGroups.FindAsync(idmg);
             if (membersGroup == null)
             {
                 return NotFound();

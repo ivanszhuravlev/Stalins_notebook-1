@@ -23,9 +23,9 @@ mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
 
             }
             for (var i = 0; i < $scope.model.members.length; i++) { /////////////////////////
-                var key = $scope.model.contacts[i];
+                var key = $scope.model.members[i];
                 if (key.ContactId == id) {
-                    $scope.model.contacts.splice(i, 1);
+                    $scope.model.members.splice(i, 1);
                     break;
                 }
 
@@ -59,12 +59,12 @@ mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
     function deleteMembersHandler(idcurrentMember, idGroup) {
         var pair =
             {
-                MemberId: idcurrentMember,
-                GroupId: idGroup
+                idgroup: idGroup,
+                idcontact: idcurrentMember
             };
         $http.delete("/api/MembersGroups",pair).success(function (data) {
             alert("deleted "+data);
-
+            alert("Удалено");
         });
     };
 
