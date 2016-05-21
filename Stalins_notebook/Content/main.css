@@ -246,11 +246,28 @@ content {
 
                     }
 
+         div.list-members {
+             position: absolute;
+             width: 200px;
+             border-right: 1px solid #ececec;
+             box-sizing: border-box;
+             display: inline-block;
+             flex-grow: 1;
+             flex-flow: column;
+
+             /*flex-grow: 1;*/
+             align-content: stretch;
+             align-items: stretch;
+             padding: 0;
+             margin: 0;
+        }
+
         content div.right-side div.output {
-            display: block;
+            display: inline-block;
             padding: 24px 28px;
             overflow: scroll;
             height: 100%;
+            width: auto;
         }
 
             div.output > div {
