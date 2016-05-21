@@ -3,19 +3,25 @@
 mainApp.controller("deleteController", function ($scope, $http) {
 
     $scope.model = model;
-    $scope.deleteitems = function () {
+    $scope.deleteItems = function () {
         var ids = $scope.model.choosed_items.sort().reverse(),
             item;
         ids.forEach(function (id, index, ids) {
-            deleteitemsHandler(id);
+            deleteItemsHandler(id);
         });
     };
 
-    function deleteitemsHandler(id) {
+    function deleteItemsHandler(id) {
         flagtype = $scope.model.flag == "flagContact" ? "Contacts" : "Groups";
+        
+       
+
         $http.delete("/api/" + flagtype + "/" + id + "").success(function (data) {
             var index = $scope.model.flag == "flagContact" ? $scope.model.contacts.indexOf(data) : $scope.model.groups.indexOf(data);
-            alert(flagtype);
+           $scope.model.flag == "flagContact" ? $scope.model.contacts.splice(index, 1) : $scope.model.groups.splice(index, 1);
+            var tag = document.getElementById("item_" + id);
+            tag.remove();
+            alert(flagtype+" "+index);
 
         });
     };

@@ -17,18 +17,18 @@
         </nav>
     </header>
     <content ng-controller="listController">
-        <aside >
+        <aside>
             <div class="action-menu left-menu">
                 <div class="specific-func" ng-include="list_type">
                 </div>
-              
+
                 <select class="switch-list" ng-model="selectedItem" ng-change="changeList(selectedItem)">
                     <option value="contacts">Контакты</option>
                     <option value="groups">Группы</option>
                 </select>
-                
-                </div>
-            <input type="search" ng-model="filtering" ng-show="searchable.visible" placeholder="Поиск..."/>
+
+            </div>
+            <input type="search" ng-model="filtering" ng-show="searchable.visible" placeholder="Поиск..." />
 
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
@@ -46,12 +46,12 @@
                 </button>
             </div>
             <div ng-controller="editController" class="output">
-                <div class="outputli"  ng-include="show"></div>
+                <div class="outputli" ng-include="show"></div>
                 <div class="outputli" ng-include="create_edit"></div>
             </div>
         </div>
-        
-        
+
+
     </content>
     <script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
     <script>
