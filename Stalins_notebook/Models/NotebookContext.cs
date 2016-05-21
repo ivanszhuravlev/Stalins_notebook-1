@@ -11,6 +11,7 @@ namespace Stalins_notebook.Models
         public DbSet<Contact> Contacts { get; set; } //Положить в БД таблицу COntacts, имеющую атрибуты класса Contact
         public DbSet<Group> Groups { get; set; }
         public DbSet<MembersGroup> MembersGroups { get; set; }
-        
+        public DbSet<Profile> Profilies { get; set; }
+
     }
 }

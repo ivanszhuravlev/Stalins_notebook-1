@@ -199,6 +199,7 @@
     <Compile Include="Models\NotebookContext.cs" />
     <Compile Include="Models\NotebookDBInitializer.cs" />
     <Compile Include="Models\Pair.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
