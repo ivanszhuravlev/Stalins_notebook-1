@@ -10,7 +10,7 @@ namespace Stalins_notebook.Models
 {
     public class Pair
     {
-        int idgroup { get; set; }
-        int idcontact { get; set; }
+        public int idgroup { get; set; }
+        public int idcontact { get; set; }
     }
 }

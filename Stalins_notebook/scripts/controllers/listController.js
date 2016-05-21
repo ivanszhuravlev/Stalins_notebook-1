@@ -173,9 +173,8 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         if (!checked_exists) {
             $scope.model.choosed_members.splice(0, $scope.model.choosed_members.length);
         }
-
-        $scope.check_global(checkbox_all, checked_exists);
         $scope.show_action_bar(action_bar, checked_exists);
+        $scope.check_global(checkbox_all, checked_exists);
     };
 
     $scope.groupClickHandler = function (group) {

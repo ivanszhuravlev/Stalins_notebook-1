@@ -16,10 +16,10 @@ mainApp.controller("editController", function ($rootScope, $scope, $http) {
             $http.put("/api/Contacts/" + contact.ContactId, contact).success(function (data) {
             });
         } else {
-            alert("fail");
+            alert("Введите верное номер телефона");
         }
         $scope.notdataedit.visible = true;
-        $rootScope.show = '';
+        
     }
 
     $scope.editGroupForm = function () {
@@ -34,7 +34,7 @@ mainApp.controller("editController", function ($rootScope, $scope, $http) {
             $scope.showGroup(data);
         });
         $scope.notdataedit.visible = true;
-        $rootScope.show = ''
+        
     }
 
     
