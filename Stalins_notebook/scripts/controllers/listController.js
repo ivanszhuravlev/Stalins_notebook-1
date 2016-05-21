@@ -3,6 +3,7 @@
 mainApp.controller("listController", function ($scope, $http) {
     $scope.show = '';
     $scope.pathmarkers = '';
+    $scope.notdataedit={visible:true};
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
@@ -73,7 +74,10 @@ mainApp.controller("listController", function ($scope, $http) {
     $scope.pathmarkers = '/ItemsList/MarkersList';
     }
 
-    
+        $scope.editForm=function()
+        {
+            $scope.notdataedit.visible = $scope.notdataedit.visible == true ? false : true;
+        }
 
 
 
@@ -91,6 +95,11 @@ mainApp.controller("listController", function ($scope, $http) {
             var index = $scope.model.flag == "flagContact" ? $scope.model.contacts.indexOf(data) : $scope.model.groups.indexOf(data);            
         });
     };
+
+
+    //--------          EDIT          - -------------------//
+    
+    //------------      ----//
 
     //add to group
    /* $scope.addMembers = function () {
@@ -182,6 +191,10 @@ mainApp.controller("listController", function ($scope, $http) {
             items = document.getElementsByClassName("item"),
             item = document.getElementById("item_" + id),
             action_bar = document.getElementById("items_actions");
+
+
+        $scope.notdataedit.visible = true;
+
 
         $scope.model.currentitem = currentitem;
         $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';

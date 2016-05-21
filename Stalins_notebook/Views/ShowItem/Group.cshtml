@@ -1,13 +1,18 @@
 ﻿<content>
-    <div class="add-contact showgroup"
-         id="group_{{model.currentitem.GroupId}}">
-        <div>
-            <p>Название: {{model.currentitem.Name}}</p>
-            <p>Заметка:  {{model.currentitem.Note}}</p>
-            <p>Описание: {{model.currentitem.Description}}</p>
-        </div>
-        <button ng-click="membersList(model.currentitem.GroupId)">Учатники</button>
-    </div>
+    <form class="add-contact">
+        <button ng-click="editForm()"><i class="material-icons">edit</i></button>
+        <p>Название</p>
+        <input type="text" id="Name" placeholder="Название" ng-model="model.currentitem.Name" ng-disabled="notdataedit.visible" />
+        <p>Заметка</p>
+        <input type="text" id="Note" placeholder="Заметка" ng-model="model.currentitem.Note" ng-disabled="notdataedit.visible" />
+        <p>Описание</p>
+        <input type="text" id="Description" placeholder="Описание" ng-model="model.currentitem.Description" ng-disabled="notdataedit.visible" />
+
+        <button ng-click="editGroup(model.currentitem, editGroupForm)" ng-hide="notdataedit.visible">
+            Сохранить изменения
+        </button>
+        <button ng-click="membersList(model.currentitem.GroupId)">Участники</button>
+    </form>
 
     <aside>
         <div class="action-menu">
@@ -21,3 +26,4 @@
         </div>
     </aside>
 </content>
+
