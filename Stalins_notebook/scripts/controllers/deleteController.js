@@ -30,7 +30,7 @@ mainApp.controller("deleteController", function ($scope, $http) {
 
     function deleteMembersHandler(id) {
        
-        $http.delete("/api/MembersGroups/" + id + "").success(function (data) {
+        $http.delete("/api/MembersGroups/" + id).success(function (data) {
             alert("deleted "+data);
 
         });
