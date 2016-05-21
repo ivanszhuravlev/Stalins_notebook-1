@@ -20,6 +20,15 @@ mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
                     $scope.model.contacts.splice(i, 1);
                     break;
                 }
+
+            }
+            for (var i = 0; i < $scope.model.members.length; i++) { /////////////////////////
+                var key = $scope.model.contacts[i];
+                if (key.ContactId == id) {
+                    $scope.model.contacts.splice(i, 1);
+                    break;
+                }
+
             }
         } else
         {

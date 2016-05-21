@@ -5,7 +5,7 @@ mainApp.config(['$compileProvider', function ($compileProvider) {
 }]);
 
 mainApp.controller("createController", function ($rootScope, $scope, $http) {
-    $rootScope.show = '';
+    
     $scope.model = model;
 
     $scope.createContactForm = function () {

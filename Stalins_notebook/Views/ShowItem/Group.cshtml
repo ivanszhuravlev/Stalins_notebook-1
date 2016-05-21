@@ -18,4 +18,13 @@
              Сохранить изменения
          </button>
     </div>
+    <div class="action-menu">
+        <!--<span class="checkbox" id="membercheck_all" ng-click="chooseAll()"></span>-->
+        <div class="action-bar" id="members_actions">
+            <button class="delete-button" ng-controller="deleteController" ng-click="deleteMembers()"><i class="material-icons">delete</i></button>
+        </div>
+    </div>
+    <div class="list-wrapper">
+        <div class="list-contacts" ng-include="pathmembers"></div>
+    </div>
 </form>

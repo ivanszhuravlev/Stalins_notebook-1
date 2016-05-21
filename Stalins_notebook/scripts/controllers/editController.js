@@ -19,7 +19,7 @@ mainApp.controller("editController", function ($rootScope, $scope, $http) {
             alert("fail");
         }
         $scope.notdataedit.visible = true;
-        $rootScope.show = '';
+        
     }
 
     $scope.editGroupForm = function () {
@@ -34,7 +34,7 @@ mainApp.controller("editController", function ($rootScope, $scope, $http) {
             $scope.showGroup(data);
         });
         $scope.notdataedit.visible = true;
-        $rootScope.show = ''
+        
     }
 
     
