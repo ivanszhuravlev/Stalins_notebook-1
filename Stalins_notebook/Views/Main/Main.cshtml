@@ -21,12 +21,15 @@
             <div class="action-menu left-menu">
                 <div class="specific-func" ng-include="list_type">
                 </div>
+              
                 <select class="switch-list" ng-model="selectedItem" ng-change="changeList(selectedItem)">
                     <option value="contacts">Контакты</option>
                     <option value="groups">Группы</option>
                 </select>
+                
                 </div>
-            
+            <input type="search" ng-model="filtering" ng-show="searchable.visible"/>
+
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
             </div>

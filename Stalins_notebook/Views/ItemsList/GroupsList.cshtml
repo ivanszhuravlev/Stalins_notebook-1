@@ -1,6 +1,6 @@
 ﻿<div class="item contact"
      id="item_{{group.GroupId}}"
-     ng-repeat="group in model.groups" >
+     ng-repeat="group in model.groups | filter:filtering" >
     
     <div>
         <span class="checkbox"

@@ -1,9 +1,13 @@
 ﻿var mainApp = angular.module("mainApp");
 
+
+
 mainApp.controller("listController", function ($scope, $http) {
     $scope.show = '';
     $scope.pathmarkers = '';
-    $scope.notdataedit={visible:true};
+    $scope.notdataedit = { visible: true };
+    $scope.searchable = { visible: false };
+
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
@@ -23,6 +27,11 @@ mainApp.controller("listController", function ($scope, $http) {
     }).error(function (message) {
         console.log("Error " + message);
     });
+
+    $scope.searchAble=function()
+    {
+        $scope.searchable.visible = $scope.searchable.visible == true ? false : true;
+    }
 
     $scope.changeList = function (type) {
         if (type == 'contacts') {

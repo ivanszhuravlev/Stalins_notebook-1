@@ -360,3 +360,13 @@ div.list-contacts {
         margin-left:200px;
         margin-right:100px;
     }
+
+    input[type=search]
+    {
+        border-radius:10px;
+        text-decoration-style:none;
+        outline:none;
+        padding:5px;
+        font-size:15px;
+
+    }

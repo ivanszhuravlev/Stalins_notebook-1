@@ -1,4 +1,4 @@
-﻿<div class="item contact" id="item_{{contact.ContactId}}" ng-repeat="contact in model.contacts" >
+﻿<div class="item contact" id="item_{{contact.ContactId}}" ng-repeat="contact in model.contacts | filter:filtering" >
     <!--ng-mouseenter="showMarkers(contact.ContactId)"
 ng-mouseleave="showMarkers(contact.ContactId)"-->
 
