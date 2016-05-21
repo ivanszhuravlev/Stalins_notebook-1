@@ -173,7 +173,6 @@
     <Compile Include="Controllers\ActionBarController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
-    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\ItemsListController.cs" />
@@ -211,8 +210,6 @@
     <Content Include="Views\ItemsList\GroupsList.cshtml" />
     <Content Include="Views\ActionBar\ActionBarGroup.cshtml" />
     <Content Include="Views\ActionBar\ActionBarContact.cshtml" />
-    <Content Include="Views\Edit\EditContactForm.cshtml" />
-    <Content Include="Views\Edit\EditGroupForm.cshtml" />
     <Content Include="Views\ShowItem\Contact.cshtml" />
     <Content Include="Views\ItemsList\MembersList.cshtml" />
     <Content Include="Views\ItemsList\MarkersList.cshtml" />

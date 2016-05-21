@@ -10,6 +10,7 @@ mainApp.controller("createController", function ($scope, $http) {
 
     $scope.createContactForm = function () {
         $scope.create_edit = '/Create/CreateContactForm';
+       // $scope.show = '';
     }
 
     $scope.createContact = function (contact, addContactForm) {
@@ -29,6 +30,7 @@ mainApp.controller("createController", function ($scope, $http) {
 
     $scope.createGroupForm = function () {
         $scope.create_edit = '/Create/CreateGroupForm';
+        //$scope.show = '';
     }
 
     $scope.createGroup = function (group, createEditGroupForm) {
