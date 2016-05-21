@@ -16,7 +16,7 @@ mainApp.controller("editController", function ($rootScope, $scope, $http) {
             $http.put("/api/Contacts/" + contact.ContactId, contact).success(function (data) {
             });
         } else {
-            alert("fail");
+            alert("Введите верное номер телефона");
         }
         $scope.notdataedit.visible = true;
         

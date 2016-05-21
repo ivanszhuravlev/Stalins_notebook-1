@@ -21,7 +21,7 @@ mainApp.controller("createController", function ($rootScope, $scope, $http) {
                 $scope.model.contacts.unshift(data);
             });
         } else {
-            alert("fail");
+            alert("Введите номер правильно");
         }
 
         $rootScope.show = '';
@@ -49,7 +49,7 @@ mainApp.controller("createController", function ($rootScope, $scope, $http) {
     };
 
     function createMembersHandler(idcurrentMember, idGroup) {
-        alert(idGroup + " " + idcurrentMember);
+       // alert(idGroup + " " + idcurrentMember);
         var membergroup =
             {
                 MemberId: idcurrentMember,
@@ -58,7 +58,7 @@ mainApp.controller("createController", function ($rootScope, $scope, $http) {
         $http.post("/api/MembersGroups/", membergroup).success(function (data) {
             console.log(data);
             $scope.model.members.unshift(data);
-            alert("good");
+            //alert("good");
         });
     };
 

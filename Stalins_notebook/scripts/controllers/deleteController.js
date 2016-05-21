@@ -52,7 +52,8 @@ mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
         var ids = $scope.model.choosed_members.sort().reverse(),
             member;
         ids.forEach(function (id, index, ids) {
-            deleteMembersHandler(id);alert("Удадение участника"+id);
+            deleteMembersHandler(id);
+            //alert("Удадение участника" + id);
         });
     };
 
@@ -62,8 +63,8 @@ mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
                 idgroup: idGroup,
                 idcontact: idcurrentMember
             };
-        $http.delete("/api/MembersGroups",pair).success(function (data) {
-            alert("deleted "+data);
+        $http.delete("/api/DeletePair", pair).success(function (data) {
+            //alert("deleted "+data);
             alert("Удалено");
         });
     };
