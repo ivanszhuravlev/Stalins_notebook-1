@@ -426,3 +426,27 @@ div.list-contacts {
                 font-size: 20px;
             }
 
+.output
+{
+    display:inline-block;
+}
+    .outputli:first-child{
+        float:left;
+        margin-left:50px;
+        margin-right:50px;
+    }
+    .outputli:last-child{
+        float:right;
+        margin-left:200px;
+        margin-right:100px;
+    }
+
+    input[type=search]
+    {
+        border-radius:10px;
+        text-decoration-style:none;
+        outline:none;
+        padding:5px;
+        font-size:15px;
+
+    }
