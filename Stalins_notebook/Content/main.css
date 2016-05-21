@@ -72,6 +72,15 @@ content {
         margin: 0;
     }
 
+        aside .search-field {
+            border: 0;
+            border-bottom: 1px solid #ececec;
+            padding: 8px 25px;
+            border-radius: 2px;
+            font-family: 'Open Sans';
+            color: #696464;
+        }
+
         aside div.action-menu {
             display: flex;
             flex-flow: row, wrap;
@@ -85,10 +94,21 @@ content {
 
             div.action-menu.left-menu {
                 justify-content: space-between;
+                width: 100%;
+            }
+
+            div.action-menu .search-button {
+                border: 0;
+                background: none;
+                padding: 0 !important;
+                color: #9B9595;
+                cursor: pointer;
+                align-self: flex-end;
             }
 
             div.action-menu .switch-list {
                 font-family: 'Open Sans';
+                margin-left: 8px;
                 border: 0;
                 cursor: pointer;
                 -webkit-appearance: none;
@@ -113,6 +133,11 @@ content {
                 }
 
             div.action-menu div.specific-func {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            div.action-menu div.shared-func {
                 display: inline-flex;
                 align-items: center;
             }
@@ -438,14 +463,4 @@ div.list-contacts {
         float:right;
         margin-left:200px;
         margin-right:100px;
-    }
-
-    input[type=search]
-    {
-        border-radius:10px;
-        text-decoration-style:none;
-        outline:none;
-        padding:5px;
-        font-size:15px;
-
     }
