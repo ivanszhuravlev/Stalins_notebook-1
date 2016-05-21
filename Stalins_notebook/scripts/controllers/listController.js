@@ -194,7 +194,7 @@ mainApp.controller("listController", function ($scope, $http) {
 
 
         $scope.notdataedit.visible = true;
-
+        
 
         $scope.model.currentitem = currentitem;
         $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
