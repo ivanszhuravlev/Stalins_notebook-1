@@ -1,0 +1,24 @@
+﻿<form class="edit-item profile">
+    <button class="edit" ng-click="editForm()"><i class="material-icons">edit</i></button>
+    ﻿<div class="show-item" id="stalin_contact">
+        <div>
+            <span class="label">Email</span>
+            <input type="text" id="Email" placeholder="Email" ng-model="model.stalin.email" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Skype</span>
+            <input type="text" id="Skype" placeholder="Skype" ng-model="model.stalin.skype" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Телефон</span>
+            <input type="text" id="Telephone" placeholder="Телефон" ng-model="model.stalin.telephone" ng-disabled="notdataedit.visible" />
+        </div>
+
+        <button class="save" ng-hide="notdataedit.visible">
+            Сохранить изменения
+        </button>
+
+    </div>
+</form>
+
+

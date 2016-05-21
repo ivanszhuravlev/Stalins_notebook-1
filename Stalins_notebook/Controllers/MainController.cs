@@ -19,5 +19,10 @@ namespace Stalins_notebook.Controllers
             return View();
         }
 
+        public ActionResult ProfilePage()
+        {
+            return View();
+        }
+
     }
 }

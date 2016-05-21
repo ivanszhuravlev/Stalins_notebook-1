@@ -275,16 +275,16 @@ content {
                 justify-content: center;
             }
 
-            div.output .show-item {
+            .show-item {
                 color: #696464;
                 font-size: 14px;
             }
                 
-                div.output .show-item div {
+                .show-item div {
                     margin-bottom: 22px;
                 }
 
-                div.output .show-item .label {
+                .show-item .label {
                     color: #ffffff;
                     font-size: 12px;
                     background: #B5ADAD;
@@ -293,7 +293,7 @@ content {
                     border-radius: 2px;
                 }
 
-                div.output button.edit {
+                .edit-item button.edit {
                     width: auto;
                     background: #ffffff;
                     box-sizing: border-box;
@@ -303,11 +303,11 @@ content {
                     cursor: pointer;
                 }
 
-                    div.output button.edit:hover {
+                    .edit-item button.edit:hover {
                         color: #69c6b2;
                     }
 
-                div.output button.save {
+                .edit-item button.save {
                     width: 100%;
                     background: #69c6b2;
                     box-sizing: border-box;
@@ -321,7 +321,7 @@ content {
                     margin-bottom: 24px;
                 }
 
-                    div.output button.save:hover {
+                    .edit-item button.save:hover {
                         background: #29ae91;
                     }
 
@@ -359,7 +359,7 @@ content {
                         background: #29ae91;
                     }
 
-            div.output form.edit-item {
+            form.edit-item {
                 display: flex;
                 flex-flow: column wrap;
                 width: auto;
