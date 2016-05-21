@@ -1,7 +1,11 @@
 ﻿<div class="item contact" id="item_{{contact.ContactId}}" ng-repeat="contact in model.contacts" >
     <div>
         <span class="checkbox" id="check_{{contact.ContactId}}" ng-click="chooseItem(contact.ContactId)"></span>
-        <span class="info">{{contact.LastName}} {{contact.FirstName}} {{contact.MiddleName}}</span>
+        <span class="info" ng-click="showItem(contact)">
+            {{contact.LastName}} 
+            {{contact.FirstName}} 
+            {{contact.MiddleName}}
+        </span>
     </div>
     <a href="skype:{{contact.Telephone1}}?call" class="call-button">
         <i class="material-icons">call</i>

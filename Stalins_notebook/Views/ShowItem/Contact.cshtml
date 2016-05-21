@@ -1,16 +1,10 @@
-﻿<div class="add-contact showgroup"
-     id="contact_{{model.currentitem.ContactId}}">
+﻿<div class="show-item" id="contact_{{model.currentitem.ContactId}}">
     <div>
-        <p>Имя: {{model.currentitem.FirstName}}</p>
-        <p>Фамилия:  {{model.currentitem.LastName}}</p>
-        <p>Отчество: {{model.currentitem.MiddleName}}</p>
-        <p>Адрес: {{model.currentitem.Address}}</p>
-        <p>Телефон: {{model.currentitem.Telephone1}}</p>
+        <p><span class="label">Фамилия</span>  {{model.currentitem.LastName}}</p>
+        <p><span class="label">Имя</span> {{model.currentitem.FirstName}}</p>
+        <p><span class="label">Отчество</span> {{model.currentitem.MiddleName}}</p>
+        <p><span class="label">Адрес</span> {{model.currentitem.Address}}</p>
+        <p><span class="label">Телефон</span> {{model.currentitem.Telephone1}}</p>
     </div>
-    <!-- <div  ng-controller="membersgroupController">
-
-             <button ng-click="showMembers(model.showgroup.GroupId)">Показать всех учатников</button>
-
-     </div>-->
 </div>
 

@@ -83,6 +83,40 @@ content {
             box-sizing: border-box;
         }
 
+            div.action-menu.left-menu {
+                justify-content: space-between;
+            }
+
+            div.action-menu .switch-list {
+                font-family: 'Open Sans';
+                border: 0;
+                cursor: pointer;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill:rgb(138,138,138)"></polygon></svg>');
+                background-size: 9px 6px;
+                background-position: right center;
+                background-origin: content-box;
+                background-repeat: no-repeat;
+
+                width: 80px;
+                color: #696464;
+            }
+
+                div.action-menu .switch-list option {
+                    color: #696464;
+                }
+
+                div.action-menu .switch-list:hover {
+                    color: #888282;
+                }
+
+            div.action-menu div.specific-func {
+                display: inline-flex;
+                align-items: center;
+            }
+
             aside div.action-menu .checkbox {
                 margin: 0 !important;   
             }
@@ -138,10 +172,10 @@ content {
         }   
 
     content div.right-side {
-        /*height: calc( 100vh - 57px);*/
         display: flex;
         flex-grow: 1;
         flex-flow: column;
+        font-family: 'Open Sans';
     }
 
         div.action-menu {
@@ -153,41 +187,7 @@ content {
             padding: 12px;
             border-bottom: 1px solid #ececec;
             margin: 0;
-        }
-
-            div.action-menu.left-menu {
-                justify-content: space-between;
-            }
-
-            div.action-menu .switch-list {
-                font-family: 'Open Sans';
-                border: 0;
-                cursor: pointer;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-
-                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill:rgb(138,138,138)"></polygon></svg>');
-                background-size: 9px 6px;
-                background-position: right center;
-                background-origin: content-box;
-                background-repeat: no-repeat;
-
-                width: 80px;
-                color: #696464;
-            }
-
-                div.action-menu .switch-list option {
-                    color: #696464;
-                }
-
-                div.action-menu .switch-list:hover {
-                    color: #888282;
-                }
-
-            div.action-menu div.specific-func {
-                display: inline-flex;
-                align-items: center;
-            }
+        }            
         
             div.action-menu button.add-contact{
                 width: auto;
@@ -232,6 +232,17 @@ content {
                 display: flex;
                 justify-content: center;
             }
+
+            div.output .show-item {
+                color: #696464;
+                font-size: 14px;
+            }
+
+                div.output .show-item .label {
+                    padding: 2px 9px;
+                    margin-right: 9px;
+                    border-right: 2px solid #d77e79;
+                }
 
             div.output form.add-contact {
                 display: flex;
@@ -320,7 +331,16 @@ div.list-contacts {
                 display: inline-flex;
                 cursor: pointer;  
                 align-self: stretch;
+                align-items: center;
             }
+
+                .info .note {
+                    color: #B5ADAD;
+                    font-size: 12px;
+                    margin-left: 11px;
+                    padding-left: 11px;
+                    border-left: 1px solid #B5ADAD;
+                }
 
                 .info:hover {
                     color: #d77e79;
