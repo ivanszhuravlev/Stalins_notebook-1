@@ -133,7 +133,8 @@ namespace Stalins_notebook.Controllers
         [ResponseType(typeof(MembersGroup))]
         public async Task<IHttpActionResult> DeleteMembersGroup(int id)
         {
-            MembersGroup membersGroup = await db.MembersGroups.FindAsync(id);
+            MembersGroup membersGroup = await db.MembersGroups.FindAsync();
+            //int idmg = db.MembersGroups.Where(mg=>mg.GroupId==pair)Select(mg=>mg.MembersGroupId).;
             if (membersGroup == null)
             {
                 return NotFound();
