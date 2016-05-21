@@ -3,19 +3,38 @@
 mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
 
     $scope.model = model;
-    $scope.deleteitems = function () {
+    $scope.deleteItems = function () {
         var ids = $scope.model.choosed_items.sort().reverse(),
             item;
         ids.forEach(function (id, index, ids) {
-            deleteitemsHandler(id);
+            deleteItemsHandler(id);
         });
     };
 
-    function deleteitemsHandler(id) {
+    function deleteItemsHandler(id) {
         flagtype = $scope.model.flag == "flagContact" ? "Contacts" : "Groups";
+        if (flagtype == "Contacts") {
+            for (var i = 0; i < $scope.model.contacts.length; i++) {
+                var key = $scope.model.contacts[i];
+                if (key.ContactId == id) {
+                    $scope.model.contacts.splice(i, 1);
+                    break;
+                }
+            }
+        } else
+        {
+            for (var i = 0; i < $scope.model.groups.length; i++) {
+                var key = $scope.model.groups[i];
+                if (key.GroupId == id) {
+                    $scope.model.groups.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        
         $http.delete("/api/" + flagtype + "/" + id + "").success(function (data) {
-            var index = $scope.model.flag == "flagContact" ? $scope.model.contacts.indexOf(data) : $scope.model.groups.indexOf(data);
-            alert(flagtype);
+            
+            alert("Удалено");
 
         });
     };
