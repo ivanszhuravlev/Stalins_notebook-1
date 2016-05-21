@@ -28,9 +28,13 @@ mainApp.controller("deleteController", function ($scope, $http) {
         });
     };
 
-    function deleteMembersHandler(id) {
-       
-        $http.delete("/api/MembersGroups/" + id + "").success(function (data) {
+    function deleteMembersHandler(idcurrentMember, idGroup) {
+        var pair =
+            {
+                MemberId: idcurrentMember,
+                GroupId: idGroup
+            };
+        $http.delete("/api/MembersGroups",pair).success(function (data) {
             alert("deleted "+data);
 
         });

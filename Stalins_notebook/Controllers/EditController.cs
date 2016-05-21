@@ -8,10 +8,14 @@ namespace Stalins_notebook.Controllers
 {
     public class EditController : Controller
     {
-        // GET: Edit
-        public ActionResult Index()
+        
+        public ActionResult EditContactForm()
         {
-            return View();
+            return PartialView();
+        }
+        public ActionResult EditGroupForm()
+        {
+            return PartialView();
         }
     }
 }
