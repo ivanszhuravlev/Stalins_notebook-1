@@ -3,6 +3,7 @@
 mainApp.controller("listController", function ($scope, $http) {
     $scope.show = '';
     $scope.pathmarkers = '';
+    $scope.notdataedit={visible:true};
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
@@ -73,7 +74,10 @@ mainApp.controller("listController", function ($scope, $http) {
     $scope.pathmarkers = '/ItemsList/MarkersList';
     }
 
-    
+        $scope.editForm=function()
+        {
+            $scope.notdataedit.visible = $scope.notdataedit.visible == true ? false : true;
+        }
 
 
 
@@ -91,6 +95,11 @@ mainApp.controller("listController", function ($scope, $http) {
             var index = $scope.model.flag == "flagContact" ? $scope.model.contacts.indexOf(data) : $scope.model.groups.indexOf(data);            
         });
     };
+
+
+    //--------          EDIT          - -------------------//
+    
+    //------------      ----//
 
     //add to group
    /* $scope.addMembers = function () {
@@ -151,17 +160,17 @@ mainApp.controller("listController", function ($scope, $http) {
 
     };
     $scope.chooseMember = function (id, currentitem) {
-        var checkbox = document.getElementById("check_" + id),
-            checkbox_all = document.getElementById("check_all"),
-            items = document.getElementsByClassName("item"),
-            item = document.getElementById("item_" + id),
-            action_bar = document.getElementById("items_actions"),
+        var checkbox = document.getElementById("membercheck_" + id),
+            checkbox_all = document.getElementById("membercheck_all"),
+            members = document.getElementsByClassName("member"),
+            member = document.getElementById("member_" + id),
+            action_bar = document.getElementById("members_actions"),
             checked_exists = false,
             found = false;
-        $scope.check_decorate(checkbox, item);
-        $scope.add_remove(checkbox, id);
-        for (var i = 0; i < items.length; i++) {
-            if (items[i].classList.contains("checked")) {
+        $scope.check_decorate(checkbox, member);
+        $scope.add_remove_member(checkbox, id);
+        for (var i = 0; i < members.length; i++) {
+            if (members[i].classList.contains("checked")) {
                 checked_exists = true;
                 break
             }
@@ -183,6 +192,10 @@ mainApp.controller("listController", function ($scope, $http) {
             items        = document.getElementsByClassName("item"),
             item         = document.getElementById("item_" + id),
             action_bar   = document.getElementById("items_actions");
+
+
+        $scope.notdataedit.visible = true;
+
 
         $scope.model.currentitem = currentitem;
         $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
@@ -291,6 +304,17 @@ mainApp.controller("listController", function ($scope, $http) {
             $scope.model.choosed_items.splice(index, 1);
         }
     }
+    $scope.add_remove_member = function (checkbox, id) {
+        var index = $scope.model.choosed_members.indexOf(id);
+
+        if (checkbox.classList.contains("checked")) {
+            if (index == -1) {
+                $scope.model.choosed_members.push(id);
+            }
+        } else {
+            $scope.model.choosed_members.splice(index, 1);
+        }
+    }
 
     $scope.check_global = function (checkbox_global, checked_exists) {
         if (checked_exists) {
@@ -307,4 +331,5 @@ mainApp.controller("listController", function ($scope, $http) {
             action_bar.classList.remove("shown");
         }
     }
+    
 });

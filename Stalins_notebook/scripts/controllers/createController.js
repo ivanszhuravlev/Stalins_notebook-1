@@ -5,11 +5,11 @@ mainApp.config(['$compileProvider', function ($compileProvider) {
 }]);
 
 mainApp.controller("createController", function ($scope, $http) {
-    $scope.create = '';
+    $scope.create_edit = '';
     $scope.model = model;
 
     $scope.createContactForm = function () {
-        $scope.create = '/Create/CreateContactForm';
+        $scope.create_edit = '/Create/CreateContactForm';
     }
 
     $scope.createContact = function (contact, addContactForm) {
@@ -24,11 +24,11 @@ mainApp.controller("createController", function ($scope, $http) {
             alert("fail");
         }
 
-        $scope.create = '';
+        $scope.create_edit = '';
     }
 
     $scope.createGroupForm = function () {
-        $scope.create = '/Create/CreateGroupForm';
+        $scope.create_edit = '/Create/CreateGroupForm';
     }
 
     $scope.createGroup = function (group, createEditGroupForm) {
@@ -36,7 +36,7 @@ mainApp.controller("createController", function ($scope, $http) {
         $http.post("/api/Groups", group).success(function (data) {
             $scope.model.groups.unshift(data);
         });
-        $scope.create = ''
+        $scope.create_edit = ''
     }
 
 

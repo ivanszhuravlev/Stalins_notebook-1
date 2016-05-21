@@ -1,7 +1,21 @@
-﻿<div class="show-item" id="group_{{model.currentitem.GroupId}}">
-    <div>
-        <p><span class="label">Название</span> {{model.currentitem.Name}}</p>
-        <p><span class="label">Заметка</span> {{model.currentitem.Note}}</p>
-        <p><span class="label">Описание</span> {{model.currentitem.Description}}</p>
+﻿<form class="edit-item">
+    <button class="edit" ng-click="editForm()"><i class="material-icons">edit</i></button>
+    ﻿<div class="show-item" id="group_{{model.currentitem.GroupId}}">
+        <div>
+            <span class="label">Название</span>
+            <input type="text" id="Name" placeholder="Название" ng-model="model.currentitem.Name" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Заметка</span>
+            <input type="text" id="Note" placeholder="Заметка" ng-model="model.currentitem.Note" ng-disabled="notdataedit.visible" />
+        </div>
+        <div>
+            <span class="label">Описание</span>
+            <input type="text" id="Description" placeholder="Описание" ng-model="model.currentitem.Description" ng-disabled="notdataedit.visible" />
+        </div>
+        
+         <button class="save" ng-click="editGroup(model.currentitem, editGroupForm)" ng-hide="notdataedit.visible">
+             Сохранить изменения
+         </button>
     </div>
-</div>
+</form>

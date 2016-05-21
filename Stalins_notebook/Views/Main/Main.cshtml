@@ -26,7 +26,7 @@
                     <option value="groups">Группы</option>
                 </select>
                 </div>
-            </div>
+            
             <div class="list-wrapper">
                 <div class="list-contacts" ng-include="path"></div>
             </div>
@@ -42,13 +42,11 @@
                     <div>Группа</div>
                 </button>
             </div>
-            <div class="output">
-                <div  ng-include="show"></div>
-                <div ng-include="create"></div>
-                <div  ng-include="edit"></div>
-                
+            <div ng-controller="editController" class="output">
+                <div ng-include="show"></div>
+                <div ng-include="create_edit"></div>
+                <div ng-include="edit"></div>
             </div>
-
         </div>
         
         
