@@ -11,7 +11,7 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
 
     $scope.model = model;
     $scope.path = '/ItemsList/ContactsList';
-    $scope.pathmembers = '';
+    $rootScope.pathmembers = '';
     $scope.list_type = '/ActionBar/ActionBarContact';
 
     $scope.selectedItem = "contacts";
@@ -28,17 +28,16 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         console.log("Error " + message);
     });
 
-    $scope.searchAble=function()
-    {
+    $scope.searchAble = function () {
         $scope.searchable.visible = $scope.searchable.visible == true ? false : true;
-    }
+    };
 
     $scope.changeList = function (type) {
         if (type == 'contacts') {
             $scope.model.choosed_items.splice(0, $scope.model.choosed_items.length);
             $scope.list_type = '/ActionBar/ActionBarContact';
             $scope.path = '/ItemsList/ContactsList';
-            
+
             $scope.model.flag = "flagContact";
         }
         else {
@@ -48,28 +47,15 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
             $scope.model.flag = "flagGroup";
         }
         console.log($scope.list_type);
-    }
+    };
 
-    $scope.membersList = function (idgroup) {
-        $scope.pathmembers = '';
-        $http.get("/api/MembersGroups/" + idgroup + "").success(function (data) {
-            $scope.model.members = data;
-
+    $scope.showMarkers = function (idcontact) {
+        $scope.pathmarkers = '';
+        $http.get("/api/Markers/" + idcontact + "").success(function (data) {
+            $scope.model.markers = data
         }).error(function (message) {
             console.log("Error " + message);
         });
-        $scope.pathmembers = '/ItemsList/MembersList';
-    }
-
-
-        $scope.showMarkers = function (idcontact)
-    {
-    $scope.pathmarkers = '';
-    $http.get("/api/Markers/"+idcontact+"").success(function (data) {
-        $scope.model.markers = data
-        }).error(function (message) {
-        console.log("Error " + message);
-    });
         /*for (i = 1; i < $scope.model.members.length; i++)
         {
             alert("Цикл Странная штуковина");
@@ -78,15 +64,14 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         alert("Странная штуковина");
         alert("Количество участников в группе:" + $scope.model.members.length)*/
         //!!!!!!!!!! Оказываетс когд мы в это программе что -то присваимваем скоп, то потом если исопльзовать в этой 
-            //же функции он не обновляется, сохраняется предудыщее значени, но если мы выйдем из функции, то всё сохранится, проверял !!!!! Очень и очень странно
+        //же функции он не обновляется, сохраняется предудыщее значени, но если мы выйдем из функции, то всё сохранится, проверял !!!!! Очень и очень странно
 
-    $scope.pathmarkers = '/ItemsList/MarkersList';
-    }
+        $scope.pathmarkers = '/ItemsList/MarkersList';
+    };
 
-        $scope.editForm=function()
-        {
-            $scope.notdataedit.visible = $scope.notdataedit.visible == true ? false : true;
-        }
+    $scope.editForm = function () {
+        $scope.notdataedit.visible = $scope.notdataedit.visible == true ? false : true;
+    };
 
 
 
@@ -191,7 +176,21 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
 
         $scope.check_global(checkbox_all, checked_exists);
         $scope.show_action_bar(action_bar, checked_exists);
-        alert(id);
+    };
+
+    $scope.groupClickHandler = function (group) {
+        $scope.showItem(group);
+        $scope.membersList(group.GroupId);
+    };
+
+    $scope.membersList = function (idgroup) {
+        $rootScope.pathmembers = '';
+        $http.get("/api/MembersGroups/" + idgroup + "").success(function (data) {
+            $scope.model.members = data;
+        }).error(function (message) {
+            console.log("Error " + message);
+        });
+        $rootScope.pathmembers = '/ItemsList/MembersList';
     };
 
     $scope.showItem = function (currentitem) {
@@ -210,7 +209,7 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         $scope.model.flag == "flagContact" ? $rootScope.show = '/ShowItem/Contact' : $rootScope.show = '/ShowItem/Group';
 
         if ($scope.model.flag != "flagContact") {
-            $scope.pathmembers = '';
+            $rootScope.pathmembers = '';
         }
 
     };
@@ -295,12 +294,12 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
     $scope.reset_check = function (checkbox, label) {
         label.classList.remove("checked");
         checkbox.classList.remove("checked");
-    }
+    };
 
     $scope.check_decorate = function (checkbox, label) {
         label.classList.toggle("checked");
         checkbox.classList.toggle("checked");
-    }
+    };
 
     $scope.add_remove = function (checkbox, id) {
         var index = $scope.model.choosed_items.indexOf(id);
@@ -312,7 +311,8 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         } else {
             $scope.model.choosed_items.splice(index, 1);
         }
-    }
+    };
+
     $scope.add_remove_member = function (checkbox, id) {
         var index = $scope.model.choosed_members.indexOf(id);
 
@@ -323,7 +323,7 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         } else {
             $scope.model.choosed_members.splice(index, 1);
         }
-    }
+    };
 
     $scope.check_global = function (checkbox_global, checked_exists) {
         if (checked_exists) {
@@ -331,7 +331,7 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         } else {
             checkbox_global.classList.remove("checked");
         }
-    }
+    };
 
     $scope.show_action_bar = function (action_bar, checked_exists) {
         if (checked_exists) {
@@ -339,6 +339,6 @@ mainApp.controller("listController", function ($rootScope, $scope, $http) {
         } else {
             action_bar.classList.remove("shown");
         }
-    }
+    };
     
 });
