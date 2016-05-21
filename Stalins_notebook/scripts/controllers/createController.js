@@ -4,13 +4,12 @@ mainApp.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype):/);
 }]);
 
-mainApp.controller("createController", function ($scope, $http) {
-    $scope.create_edit = '';
+mainApp.controller("createController", function ($rootScope, $scope, $http) {
+    $rootScope.show = '';
     $scope.model = model;
 
     $scope.createContactForm = function () {
-        $scope.create_edit = '/Create/CreateContactForm';
-       // $scope.show = '';
+        $rootScope.show = '/Create/CreateContactForm';
     }
 
     $scope.createContact = function (contact, addContactForm) {
@@ -25,12 +24,11 @@ mainApp.controller("createController", function ($scope, $http) {
             alert("fail");
         }
 
-        $scope.create_edit = '';
+        $rootScope.show = '';
     }
 
     $scope.createGroupForm = function () {
-        $scope.create_edit = '/Create/CreateGroupForm';
-        //$scope.show = '';
+        $rootScope.show = '/Create/CreateGroupForm';
     }
 
     $scope.createGroup = function (group, createEditGroupForm) {
@@ -38,7 +36,7 @@ mainApp.controller("createController", function ($scope, $http) {
         $http.post("/api/Groups", group).success(function (data) {
             $scope.model.groups.unshift(data);
         });
-        $scope.create_edit = ''
+        $rootScope.show = ''
     }
 
 

@@ -1,6 +1,6 @@
 ﻿var mainApp = angular.module("mainApp");
 
-mainApp.controller("deleteController", function ($scope, $http) {
+mainApp.controller("deleteController", function ($rootScope, $scope, $http) {
 
     $scope.model = model;
     $scope.deleteitems = function () {

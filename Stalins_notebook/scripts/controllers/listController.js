@@ -2,8 +2,8 @@
 
 
 
-mainApp.controller("listController", function ($scope, $http) {
-    $scope.show = '';
+mainApp.controller("listController", function ($rootScope, $scope, $http) {
+    $rootScope.show = '';
     $scope.pathmarkers = '';
     $scope.notdataedit = { visible: true };
     $scope.searchable = { visible: false };
@@ -207,7 +207,7 @@ mainApp.controller("listController", function ($scope, $http) {
         
 
         $scope.model.currentitem = currentitem;
-        $scope.model.flag == "flagContact" ? $scope.show = '/ShowItem/Contact' : $scope.show = '/ShowItem/Group';
+        $scope.model.flag == "flagContact" ? $rootScope.show = '/ShowItem/Contact' : $rootScope.show = '/ShowItem/Group';
 
         if ($scope.model.flag != "flagContact") {
             $scope.pathmembers = '';

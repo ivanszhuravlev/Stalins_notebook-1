@@ -1,13 +1,11 @@
 ﻿var mainApp = angular.module("mainApp");
 
-mainApp.controller("editController", function ($scope, $http) {
+mainApp.controller("editController", function ($rootScope, $scope, $http) {
     
     $scope.model = model;
-   // $scope.show=''
 
     $scope.editContactForm = function () {
-        $scope.show = '';
-        $scope.show = '/Edit/EditContactForm';
+        $rootScope.show = '/Edit/EditContactForm';
     }
 
     $scope.editContact = function (contact, editContactForm) {
@@ -21,12 +19,11 @@ mainApp.controller("editController", function ($scope, $http) {
             alert("fail");
         }
         $scope.notdataedit.visible = true;
-        $scope.show = '';
+        $rootScope.show = '';
     }
 
     $scope.editGroupForm = function () {
-        $scope.show = '';
-        $scope.create = '/Edit/EditGroupForm';
+        $rootScope.show = '/Edit/EditGroupForm';
     }
 
     $scope.editGroup = function (group, editGroupForm) {
@@ -37,7 +34,7 @@ mainApp.controller("editController", function ($scope, $http) {
             $scope.showGroup(data);
         });
         $scope.notdataedit.visible = true;
-        $scope.show = ''
+        $rootScope.show = ''
     }
 
     

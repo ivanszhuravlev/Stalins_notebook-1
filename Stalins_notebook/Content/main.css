@@ -454,13 +454,5 @@ div.list-contacts {
 {
     display:inline-block;
 }
-    .outputli:first-child{
-        float:left;
-        margin-left:50px;
-        margin-right:50px;
-    }
-    .outputli:last-child{
-        float:right;
-        margin-left:200px;
-        margin-right:100px;
-    }
+
+
