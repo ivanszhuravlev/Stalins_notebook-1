@@ -142,39 +142,22 @@
     <Content Include="App_Data\Notebook_log.ldf">
       <DependentUpon>Notebook.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo_min.png" />
     <Content Include="Content\index.css" />
     <Content Include="Content\main.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\profile.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\controllers\createController.js" />
     <Content Include="scripts\controllers\deleteController.js" />
     <Content Include="scripts\controllers\editController.js" />
     <Content Include="scripts\controllers\listController.js" />
     <Content Include="scripts\index.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
-    <None Include="scripts\jquery.validate-vsdoc.js" />
-    <Content Include="scripts\jquery.validate.js" />
-    <Content Include="scripts\jquery.validate.min.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -215,7 +198,6 @@
     <Content Include="Views\ItemsList\ContactsList.cshtml" />
     <Content Include="Views\Main\Main.cshtml" />
     <Content Include="scripts\angular.min.js.map" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Create\CreateGroupForm.cshtml" />
     <Content Include="Views\ShowItem\Group.cshtml" />
     <Content Include="Views\ItemsList\GroupsList.cshtml" />
