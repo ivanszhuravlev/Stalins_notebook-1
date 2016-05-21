@@ -191,20 +191,19 @@ content {
         
             div.action-menu button.add-contact{
                 width: auto;
-                background: #69c6b2;
+                background: #ffffff;
                 box-sizing: border-box;
                 border: 0;
-                border-radius: 2px;
-                padding: 6px 12px;
-                color: #ffffff;
-                font-size: 12px;
-                font-family: 'Open Sans', sans-serif;
+                margin-right: 12px;
+                color: #88b2a9;
+                font-size: 13px;
+                font-family: 'Open Sans';
                 cursor: pointer;
                 vertical-align: middle;
             }
 
                 div.action-menu button.add-contact:hover {
-                    background: #29ae91;
+                    color: #29ae91;
                 }
 
                 button.add-contact div {
@@ -219,6 +218,7 @@ content {
 
                     button.add-contact div i {
                         font-size: 18px;
+
                     }
 
         content div.right-side div.output {
